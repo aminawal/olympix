@@ -1,5 +1,5 @@
 import React from "react";
-import DataContext from "./dataContext";
+import DataContext from "./DataContext";
 
 import fussballIcon from '../assets/icons/fussballIcon.svg'
 import laufenIcon from '../assets/icons/laufenIcon.svg'
@@ -20,75 +20,75 @@ const DataContextProvider = (props) => {
             name: "Fußball",
             img: fussballIcon,
             alt: "Fußball Icon",
-            link: "/fussball"
+            link: "fussball"
         },
         {
             id: 2,
             name: "Basketball",
             img: basketballIcon,
             alt: "BasketBall Icon",
-            link: "/basketball"
+            link: "basketball"
         },
         {
             id: 3,
             name: "Laufen",
             img: laufenIcon,
             alt: "Laufen Icon",
-            link: "/laufen"
+            link: "laufen"
         },
         {
             id: 4,
             name: "Fitness",
             img: fitnessIcon,
             alt: "Fitness Icon",
-            link: "/fitness"
+            link: "fitness"
         },
         {
             id: 5,
             name: "Tennis",
             img: tennisIcon,
             alt: "Tennis Icon",
-            link: "/tennis"
+            link: "tennis"
         },
         {
             id: 6,
             name: "Football",
             img: footballIcon,
             alt: "Football Icon",
-            link: "/football"
+            link: "football"
         },
         {
             id: 7,
             name: "Kampfsport",
             img: kampfsportIcon,
             alt: "Kampfsport Icon",
-            link: "/kampfsport"
+            link: "kampfsport"
         },
         {
             id: 8,
             name: "Turnen",
             img: turnenIcon,
             alt: "Turnen Icon",
-            link: "/turnen"
+            link: "turnen"
         },
         {
             id: 9,
             name: "Hockey",
             img: hockeyIcon,
             alt: "Hockey Icon",
-            link: "/hockey"
+            link: "hockey"
         },
         {
             id: 10,
             name: "Volleyball",
             img: volleyballIcon,
             alt: "Volleyball Icon",
-            link: "/volleyball"
+            link: "volleyball"
         },
     ];
 
     return(
-        <DataContext.Provider value={sports}>
+        <DataContext.Provider value={{sports}}>
             {props.children}
         </DataContext.Provider>
     );
