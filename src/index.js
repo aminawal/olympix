@@ -4,10 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import DataContextProvider from './context/DataContexProvider';
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <DataContextProvider>
+      <App />
+    </DataContextProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );

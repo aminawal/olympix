@@ -1,13 +1,14 @@
 import React from "react";
 
-import Logo from '../../assets/Logo/Logo.png';
+import { Link } from "react-router-dom";
 
+import Logo from '../../assets/logo/Logo.png';
 import classes from './Header.module.css';
 
 const Header = (props) => {
     return(
         <header className={classes.header}>
-            <a href="/"><img src={Logo} alt="Olympix Logo" className={classes.logo}/></a>
+            <Link to="/"><img src={Logo} alt="Olympix Logo" className={classes.logo}/></Link>
             <h1 className={classes.headline}>Headline</h1>
         </header>
     );
