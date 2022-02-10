@@ -1,8 +1,16 @@
+.inputWrapper {
+    display: grid;
+    position: relative;
+}
+
 .input {
     padding: 10px;
+    font-size: 1em;
+    text-indent: 25px;
 }
 
 .searchIcon {
-    left: 15px;
-    top: 10px;
+    position: absolute;
+    left: 10px;
+    top: 13px;
 }

@@ -10,6 +10,7 @@ const Category = (props) => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [events, setEvents] = useState([]);
+    const [filteredEvents, setFilteredEvents] = useState([]);
     const [error, setError] = useState(null);
 
     const { category } = useParams();
@@ -45,6 +46,7 @@ const Category = (props) => {
                 }
 
                 setEvents(eventsData);
+                setFilteredEvents(eventsData);
 
             }catch(error){
                 setError(error.message);
@@ -58,7 +60,7 @@ const Category = (props) => {
 
     }, [category]);
 
-    const eventsList = events.map(event => (
+    const eventsList = filteredEvents.map(event => (
         <EventCard 
             key={event.id}
             id={event.id}
@@ -68,17 +70,28 @@ const Category = (props) => {
         />
     ))
 
+    const filterHandler = (input) => {
+        const filteredCities = events.filter(event => {
+            const value = input.trim().toLowerCase();
+            return value === event.city.toLowerCase().slice(0, value.length);
+        });
+        setFilteredEvents(filteredCities);
+    };
+
     return(
-        <section>
-            <CardsFilter />
-            <div>
+        <div className={classes.grid}>
+            {events.length > 0 && <section className={classes.filter}>
+                <CardsFilter onFilter={filterHandler}/>
+                <p className={classes.amount}><span>{filteredEvents.length}</span> events found</p>
+            </section>}
+            <section>
                 {isLoading && <p>Loading events...</p>}
                 {error && error}
-            </div>
-            <div className={classes.cards}>
+            </section>
+            <section className={classes.cards}>
                 {eventsList}
-            </div>
-        </section>
+            </section>
+        </div>
     );
 };
 
