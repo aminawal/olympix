@@ -1,0 +1,38 @@
+.grid {
+    display: grid;
+}
+
+.image {
+    margin: -10px;
+    height: 100%;
+    width: calc(100% + 20px) ;
+}
+
+.content{
+    display: grid;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.description {
+    display: grid;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.description > h4 {
+    font-size: 1em;
+    margin: 0;
+}
+
+.description > p {
+    font-size: 0.8em;
+    font-weight: 300;
+    margin: 0;
+}
+
+.subscriberImage {
+    border-radius: 100%;
+    height: 35px;
+    width: auto;
+}

@@ -14,6 +14,10 @@ const CardsFilter = (props) => {
         <section className={classes.inputWrapper}>
         <input className={classes.input} type="text" placeholder="Filter cities" onChange={changeHandler}/>
         <FontAwesomeIcon className={classes.searchIcon} icon={faSearch}/>
+        <p className={classes.amount}>
+            {props.length > 0 ? <span>{props.length} </span> : "No "}
+            {`${props.length > 1 ? "events" : "event"} found`}
+        </p>
         </section>
     );
 };

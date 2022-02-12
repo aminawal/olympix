@@ -80,10 +80,7 @@ const Category = (props) => {
 
     return(
         <div className={classes.grid}>
-            {events.length > 0 && <section className={classes.filter}>
-                <CardsFilter onFilter={filterHandler}/>
-                <p className={classes.amount}><span>{filteredEvents.length}</span> events found</p>
-            </section>}
+            {events.length > 0 && <CardsFilter onFilter={filterHandler} length={filteredEvents.length}/>}
             <section>
                 {isLoading && <p>Loading events...</p>}
                 {error && error}
