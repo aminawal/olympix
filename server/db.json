@@ -21,8 +21,7 @@
                 {"id": 6, "firstName": "Abdullah", "lastName": "Minawal", "image": "1.png"},
                 {"id": 7, "firstName": "Abdullah", "lastName": "Minawal", "image": "1.png"},
                 {"id": 8, "firstName": "Abdullah", "lastName": "Minawal", "image": "1.png"},
-                {"id": 9, "firstName": "Abdullah", "lastName": "Minawal", "image": "1.png"},
-                {"id": 10, "firstName": "Abdullah", "lastName": "Minawal", "image": "1.png"}
+                {"id": 9, "firstName": "Abdullah", "lastName": "Minawal", "image": "1.png"}
             ]
         },
         {
@@ -108,5 +107,21 @@
     ],
     "basketball" : [
         
+    ],
+
+    "members" : [
+        {
+            "id": 1, 
+            "firstName": "Abdullah", 
+            "lastName": "Minawal",
+            "email": "abdullah.minawal@hotmail.de", 
+            "img": "members/1.png",
+            "subscribedEvents": [
+                {"id": 5, "category": "fussball"}
+            ],
+            "organizedEvents": [
+                {"id": 1, "category": "fussball"}
+            ]
+        }
     ]
 }

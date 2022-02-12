@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useParams } from "react-router";
 
 import EventInfo from "../../components/EventInfo";
@@ -13,58 +13,81 @@ const EventDetails = (props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [eventData, setEventData] = useState(null);
     const [error, setError] = useState(null);
+    const [memberData, setMemberData] = useState(null);
+    const [isSubscriber, setIsSubscriber] = useState(false);
 
     const {category, eventId} = useParams();
 
-    useEffect(() => {
-        const fetchEventData = async() => {
+    const fetchData = useCallback (async(url, errorMessage, dataHandler) => {
 
-            setIsLoading(true);
-            setError(null);
+        setIsLoading(true);
+        setError(null);
 
-            try{
+        try{
 
-                const response = await fetch(`http://localhost:3500/${category}/${eventId}`);
-                if(!response.ok) {
-                    throw Error("Event not found");
-                };
+            const response = await fetch(url);
+            if(!response.ok) {
+                throw Error(errorMessage);
+            };
 
-                const data = await response.json();
+            const data = await response.json();
 
-                setEventData(data);
+            dataHandler(data);
 
-            } catch(error) {
+        } catch(error) {
+            setError(error.message);
 
-                setError(error.message);
+        } finally {
 
-            } finally {
+            setIsLoading(false);
 
-                setIsLoading(false);
-
-            }
         }
+    }, []);
 
-        fetchEventData();
+    useEffect(() => {
 
-    }, [category, eventId])
+        fetchData(`http://localhost:3500/${category}/${eventId}`,
+        "Event not found",
+        (data) => setEventData(data));
+
+        fetchData(`http://localhost:3500/members/1`,
+        "Member not found",
+        (data) => {
+            setMemberData(data);
+            data.subscribedEvents.some(event => 
+                event.category === category &&
+                event.id === +eventId
+            ) ? setIsSubscriber(true) : setIsSubscriber(false);
+        });
+
+    }, [fetchData, category, eventId]);
 
     let subscribers;
     let furtherAmount;
     let leftPlacesAmount;
     let organizerName;
 
-    if(eventData) {
+
+    if(eventData && memberData) {
         const shortenData = eventData.subscribers.slice(-5);
         subscribers = shortenData.map(subscriber => (
             <img key={subscriber.id} className={classes.subscriberImage} src={require(`../../assets/members/${subscriber.image}`)} alt=""/>
         ));
         if(eventData.subscribers.length > 5) {
             furtherAmount = `+${eventData.subscribers.length - 5}`;
-        }
+        };
         if(typeof(eventData.limit) === "number"){
             leftPlacesAmount = eventData.limit - eventData.subscribers.length;
-        }
-        organizerName = `${eventData.host.firstName}  ${eventData.host.lastName}`;
+        };
+        organizerName = `${eventData.host.firstName} ${eventData.host.lastName}`;
+    };
+
+    const subscribeHandler = () => {
+        setIsSubscriber(true);
+    };
+
+    const unsubscribeHandler = () => {
+        setIsSubscriber(false);
     };
 
     return(
@@ -89,7 +112,16 @@ const EventDetails = (props) => {
                     furtherAmount={furtherAmount}
                     leftPlaces={leftPlacesAmount}
                 />
-                <Button onClick={() => console.log("Clicked")}>Subscribe</Button>
+                {!isSubscriber && 
+                <Button 
+                    onClick={subscribeHandler}
+                    >Subscribe
+                </Button>}
+                {isSubscriber && 
+                <Button 
+                    onClick={unsubscribeHandler}
+                    >Unsubscribe
+                </Button>}
                 <div className={classes.description}>
                     <h4>Description</h4>
                     <p className={classes.description}>{eventData.text}</p>
