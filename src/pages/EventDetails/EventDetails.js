@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router";
 
 import EventInfo from "../../components/EventInfo";
@@ -11,10 +11,15 @@ import classes from './EventDetails.module.css';
 const EventDetails = (props) => {
 
     const [isLoading, setIsLoading] = useState(false);
-    const [eventData, setEventData] = useState(null);
     const [error, setError] = useState(null);
+    const [eventData, setEventData] = useState(null);
     const [memberData, setMemberData] = useState(null);
     const [isSubscriber, setIsSubscriber] = useState(false);
+    const [subscribersExcerpt, setSubscribersExcerpt] = useState([]);
+    const [subscribers, setSubscribers] = useState([]);
+    const [furtherAmount, setFurtherAmount] = useState();
+    const [leftPlacesAmount, setleftPlacesAmount] = useState();
+    const [organizerName, setOrganizerName] = useState("");
 
     const {category, eventId} = useParams();
 
@@ -44,11 +49,24 @@ const EventDetails = (props) => {
         }
     }, []);
 
-    useEffect(() => {
-
+    useEffect(() => { 
         fetchData(`http://localhost:3500/${category}/${eventId}`,
         "Event not found",
-        (data) => setEventData(data));
+        (data) => {
+            setEventData(data);
+            const shortenData = data.subscribers.slice(-5);
+            setSubscribersExcerpt(shortenData.map(subscriber => (
+                <img key={subscriber.id} className={classes.subscriberImage} src={require(`../../assets/members/${subscriber.image}`)} alt=""/>
+            )))
+            if(data.subscribers.length > 5) {
+                setFurtherAmount(`+${data.subscribers.length - 5}`);
+            };
+            if(typeof(data.limit) === "number"){
+                setleftPlacesAmount(data.limit - data.subscribers.length);
+            };
+            setOrganizerName(`${data.host.firstName} ${data.host.lastName}`);
+            setSubscribers(data.subscribers);
+        });
 
         fetchData(`http://localhost:3500/members/1`,
         "Member not found",
@@ -59,35 +77,48 @@ const EventDetails = (props) => {
                 event.id === +eventId
             ) ? setIsSubscriber(true) : setIsSubscriber(false);
         });
-
     }, [fetchData, category, eventId]);
 
-    let subscribers;
-    let furtherAmount;
-    let leftPlacesAmount;
-    let organizerName;
+    const patchData = useCallback (async(url) => {
 
+        setIsLoading(true);
+        setError(null);
 
-    if(eventData && memberData) {
-        const shortenData = eventData.subscribers.slice(-5);
-        subscribers = shortenData.map(subscriber => (
-            <img key={subscriber.id} className={classes.subscriberImage} src={require(`../../assets/members/${subscriber.image}`)} alt=""/>
-        ));
-        if(eventData.subscribers.length > 5) {
-            furtherAmount = `+${eventData.subscribers.length - 5}`;
-        };
-        if(typeof(eventData.limit) === "number"){
-            leftPlacesAmount = eventData.limit - eventData.subscribers.length;
-        };
-        organizerName = `${eventData.host.firstName} ${eventData.host.lastName}`;
-    };
+        try{
+
+            const response = await fetch(url, {
+                method: "PATCH",
+                body: JSON.stringify({
+                    subscribers: subscribers
+                }),
+                headers:{
+                    "Content-Type": "application/json"
+                } 
+            });
+            if(!response.ok) {
+                throw Error("Something went wrong");
+            };
+
+            const data = await response.json();
+            console.log(data);
+
+        } catch(error) {
+            setError(error.message);
+
+        } finally {
+            setIsLoading(false);
+
+        }
+    }, [subscribers]);
 
     const subscribeHandler = () => {
         setIsSubscriber(true);
+        patchData(`http://localhost:3500/${category}/${eventId}`)
     };
 
     const unsubscribeHandler = () => {
         setIsSubscriber(false);
+        patchData(`http://localhost:3500/${category}/${eventId}`)
     };
 
     return(
@@ -108,7 +139,7 @@ const EventDetails = (props) => {
                     price={eventData.price}
                 />
                 <EventSubscribers 
-                    subscribers={subscribers}
+                    subscribers={subscribersExcerpt}
                     furtherAmount={furtherAmount}
                     leftPlaces={leftPlacesAmount}
                 />
