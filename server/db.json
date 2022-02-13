@@ -103,6 +103,12 @@
           "firstName": "Abdullah",
           "lastName": "Minawal",
           "image": "1.png"
+        },
+        {
+          "id": 2,
+          "firstName": "Emily",
+          "lastName": "Ratatui",
+          "image": "2.png"
         }
       ]
     },
@@ -155,12 +161,6 @@
           "firstName": "Abdullah",
           "lastName": "Minawal",
           "image": "1.png"
-        },
-        {
-          "id": 2,
-          "firstName": "Emily",
-          "lastName": "Ratatui",
-          "image": "2.png"
         }
       ]
     },
@@ -266,7 +266,7 @@
       "img": "2.png",
       "subscribedEvents": [
         {
-          "id": 4,
+          "id": 2,
           "category": "fussball"
         }
       ],

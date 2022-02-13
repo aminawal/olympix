@@ -1,18 +1,19 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 
 import EventInfo from "../../components/EventInfo";
 import EventSubscribers from "../../components/EventSubscribers/EventSubscribers";
 import Button from "../../components/Button/Button";
 import OrganizerCard from "../../components/OrganizerCard/OrganizerCard";
+import useFetch from "../../hooks/useFetch";
 
 import classes from './EventDetails.module.css';
 import EventImage from "../../components/EventImage/EventImage";
 
 const EventDetails = (props) => {
 
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
+    // const [isLoading, setIsLoading] = useState(false);
+    // const [error, setError] = useState(null);
     const [eventData, setEventData] = useState(null);
     const [memberData, setMemberData] = useState(null);
     const [isSubscriber, setIsSubscriber] = useState();
@@ -25,6 +26,8 @@ const EventDetails = (props) => {
     const [subscriberStop, setSubscriberStop] = useState(false);
 
     const {category, eventId} = useParams();
+
+    const { isLoading, error, sendRequest } = useFetch();
 
     const updateFunc = (data) => {
         setEventData(data);
@@ -54,39 +57,37 @@ const EventDetails = (props) => {
         };
     };
 
-    const fetchData = useCallback (async(url, errorMessage, dataHandler) => {
+    // const fetchData = useCallback (async(url, errorMessage, dataHandler) => {
 
-        setIsLoading(true);
-        setError(null);
+    //     setIsLoading(true);
+    //     setError(null);
 
-        try{
+    //     try{
 
-            const response = await fetch(url);
-            if(!response.ok) {
-                throw Error(errorMessage);
-            };
+    //         const response = await fetch(url);
+    //         if(!response.ok) {
+    //             throw Error(errorMessage);
+    //         };
 
-            const data = await response.json();
+    //         const data = await response.json();
 
-            dataHandler(data);
+    //         dataHandler(data);
 
-        } catch(error) {
-            setError(error.message);
+    //     } catch(error) {
+    //         setError(error.message);
 
-        } finally {
+    //     } finally {
 
-            setIsLoading(false);
+    //         setIsLoading(false);
 
-        }
-    }, []);
+    //     }
+    // }, []);
 
     useEffect(() => { 
-        fetchData(`http://localhost:3500/${category}/${eventId}`,
-        "Event not found",
+        sendRequest({url: `http://localhost:3500/${category}/${eventId}`},
         data => updateFunc(data));
 
-        fetchData(`http://localhost:3500/members/2`,
-        "Member not found",
+        sendRequest({url: `http://localhost:3500/members/2`},
         (data) => {
             setMemberData(data);
             setCurrentSubscriber({
@@ -100,71 +101,85 @@ const EventDetails = (props) => {
                 event.id === +eventId
             ) ? setIsSubscriber(true) : setIsSubscriber(false);
         });
-    }, [fetchData, category, eventId]);
+    }, [sendRequest, category, eventId]);
 
-    const patchData = useCallback (async(url, updateData, dataHandler) => {
+    // const patchData = useCallback (async(url, updateData, dataHandler) => {
 
-        setIsLoading(true);
-        setError(null);
+    //     setIsLoading(true);
+    //     setError(null);
 
-        try{
+    //     try{
 
-            const response = await fetch(url, {
-                method: "PATCH",
-                body: JSON.stringify(updateData),
-                headers:{
-                    "Content-Type": "application/json"
-                } 
-            });
-            if(!response.ok) {
-                throw Error("Something went wrong");
-            };
+    //         const response = await fetch(url, {
+    //             method: "PATCH",
+    //             body: JSON.stringify(updateData),
+    //             headers:{
+    //                 "Content-Type": "application/json"
+    //             } 
+    //         });
+    //         if(!response.ok) {
+    //             throw Error("Something went wrong");
+    //         };
 
-            const data = await response.json();
-            dataHandler(data);
+    //         const data = await response.json();
+    //         dataHandler(data);
 
-        } catch(error) {
-            setError(error.message);
+    //     } catch(error) {
+    //         setError(error.message);
 
-        } finally {
-            setIsLoading(false);
+    //     } finally {
+    //         setIsLoading(false);
 
-        }
-    }, []);
+    //     }
+    // }, []);
 
     const subscribeHandler = () => {
-        patchData(
-            `http://localhost:3500/${category}/${eventId}`,
-            {subscribers: subscribers.concat(currentSubscriber)},
-            (data) => updateFunc(data)
+        sendRequest({
+                url: `http://localhost:3500/${category}/${eventId}`,
+                method: "PATCH",
+                headers: { "Content-Type": "application/json"},
+                body: {subscribers: subscribers.concat(currentSubscriber)}
+            },  
+                (data) => updateFunc(data)
         );
-        patchData(
-            `http://localhost:3500/members/2`,
-            {subscribedEvents: memberData.subscribedEvents.concat({id: +eventId, category: category})},
-            (data) => {
-                setMemberData(data);
-                data.subscribedEvents.some(event => 
-                event.category === category &&
-                event.id === +eventId
-                ) ? setIsSubscriber(true) : setIsSubscriber(false);
+        sendRequest({
+                url:`http://localhost:3500/members/2`,
+                method: "PATCH",
+                headers: { "Content-Type": "application/json"},
+                body: {subscribedEvents: memberData.subscribedEvents.concat({id: +eventId, category: category})}
+            },
+                (data) => {
+                    setMemberData(data);
+                    data.subscribedEvents.some(event => 
+                    event.category === category &&
+                    event.id === +eventId
+                    ) ? setIsSubscriber(true) : setIsSubscriber(false);
             }
+            
         );
     };
 
     const unsubscribeHandler = () => {
-        patchData(`http://localhost:3500/${category}/${eventId}`,
-            {subscribers: subscribers.filter(subscriber => subscriber.id !== currentSubscriber.id)},
-            (data) => updateFunc(data)
+        sendRequest({
+                url:`http://localhost:3500/${category}/${eventId}`,
+                method: "PATCH",
+                headers: { "Content-Type": "application/json"},
+                body: {subscribers: subscribers.filter(subscriber => subscriber.id !== currentSubscriber.id)}
+            },
+                (data) => updateFunc(data)
         );
-        patchData(
-            `http://localhost:3500/members/2`,
-            {subscribedEvents: memberData.subscribedEvents.filter(event => event.id !== +eventId && category)},
-            (data) => {
-                setMemberData(data);
-                data.subscribedEvents.some(event => 
-                event.category === category && event.id === +eventId
-                ) ? setIsSubscriber(true) : setIsSubscriber(false);
-            }
+        sendRequest({
+                url:`http://localhost:3500/members/2`,
+                method: "PATCH",
+                headers: { "Content-Type": "application/json"},
+                body: {subscribedEvents: memberData.subscribedEvents.filter(event => event.id !== +eventId && category)}
+            },
+                (data) => {
+                    setMemberData(data);
+                    data.subscribedEvents.some(event => 
+                    event.category === category && event.id === +eventId
+                    ) ? setIsSubscriber(true) : setIsSubscriber(false);
+                }
         );
     };
 
