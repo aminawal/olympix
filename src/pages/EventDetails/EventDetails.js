@@ -12,8 +12,6 @@ import EventImage from "../../components/EventImage/EventImage";
 
 const EventDetails = (props) => {
 
-    // const [isLoading, setIsLoading] = useState(false);
-    // const [error, setError] = useState(null);
     const [eventData, setEventData] = useState(null);
     const [memberData, setMemberData] = useState(null);
     const [isSubscriber, setIsSubscriber] = useState();
@@ -57,32 +55,6 @@ const EventDetails = (props) => {
         };
     };
 
-    // const fetchData = useCallback (async(url, errorMessage, dataHandler) => {
-
-    //     setIsLoading(true);
-    //     setError(null);
-
-    //     try{
-
-    //         const response = await fetch(url);
-    //         if(!response.ok) {
-    //             throw Error(errorMessage);
-    //         };
-
-    //         const data = await response.json();
-
-    //         dataHandler(data);
-
-    //     } catch(error) {
-    //         setError(error.message);
-
-    //     } finally {
-
-    //         setIsLoading(false);
-
-    //     }
-    // }, []);
-
     useEffect(() => { 
         sendRequest({url: `http://localhost:3500/${category}/${eventId}`},
         data => updateFunc(data));
@@ -103,35 +75,6 @@ const EventDetails = (props) => {
         });
     }, [sendRequest, category, eventId]);
 
-    // const patchData = useCallback (async(url, updateData, dataHandler) => {
-
-    //     setIsLoading(true);
-    //     setError(null);
-
-    //     try{
-
-    //         const response = await fetch(url, {
-    //             method: "PATCH",
-    //             body: JSON.stringify(updateData),
-    //             headers:{
-    //                 "Content-Type": "application/json"
-    //             } 
-    //         });
-    //         if(!response.ok) {
-    //             throw Error("Something went wrong");
-    //         };
-
-    //         const data = await response.json();
-    //         dataHandler(data);
-
-    //     } catch(error) {
-    //         setError(error.message);
-
-    //     } finally {
-    //         setIsLoading(false);
-
-    //     }
-    // }, []);
 
     const subscribeHandler = () => {
         sendRequest({
