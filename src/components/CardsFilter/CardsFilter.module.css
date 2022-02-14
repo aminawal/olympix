@@ -1,5 +1,6 @@
 .inputWrapper {
     display: grid;
+    gap: 5px;
     position: relative;
 }
 
@@ -13,4 +14,15 @@
     position: absolute;
     left: 10px;
     top: 13px;
+}
+
+.amount {
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 0.8em;
+    text-indent: 1px;
+}
+
+.amount > span {
+    font-weight: bold;
 }
