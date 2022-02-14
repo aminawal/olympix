@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useReducer } from "react";
 import { useParams } from "react-router";
 
 import EventInfo from "../../components/EventInfo";
@@ -10,69 +10,35 @@ import useFetch from "../../hooks/useFetch";
 import classes from './EventDetails.module.css';
 import EventImage from "../../components/EventImage/EventImage";
 
+const defaultState = {
+    eventData: null,
+    subscribers: [],
+    subscribersExcerpt: [],
+    furtherAmount: null,
+    leftPlacesAmount: null,
+    organizerName: "",
+    subscriberStop: false,
+    memberData: null,
+    currentSubscriber: null,
+    isSubscriber: null
+};
+
 const EventDetails = (props) => {
 
-    const [eventData, setEventData] = useState(null);
-    const [memberData, setMemberData] = useState(null);
-    const [isSubscriber, setIsSubscriber] = useState();
-    const [currentSubscriber, setCurrentSubscriber] = useState();
-    const [subscribersExcerpt, setSubscribersExcerpt] = useState([]);
-    const [subscribers, setSubscribers] = useState([]);
-    const [furtherAmount, setFurtherAmount] = useState();
-    const [leftPlacesAmount, setleftPlacesAmount] = useState();
-    const [organizerName, setOrganizerName] = useState("");
-    const [subscriberStop, setSubscriberStop] = useState(false);
+    const [eventState, dispatchAction] = useReducer(eventReducer, defaultState);
 
     const {category, eventId} = useParams();
 
     const { isLoading, error, sendRequest } = useFetch();
 
-    const updateFunc = (data) => {
-        setEventData(data);
-        if(data.subscribers.length > 0) {
-        const shortenData = data.subscribers.slice(-5);
-        setSubscribersExcerpt(shortenData.map(subscriber => (
-            <img key={subscriber.id} className={classes.subscriberImage} src={require(`../../assets/members/${subscriber.image}`)} alt=""/>
-        )))} else {
-            setSubscribersExcerpt([])
-        }
-        if(data.subscribers.length > 5) {
-            setFurtherAmount(`+${data.subscribers.length - 5}`);
-        } else {
-            setFurtherAmount(null)
-        }
-        if(typeof(data.limit) === "number"){
-            setleftPlacesAmount(data.limit - data.subscribers.length);
-        };
-        setOrganizerName(`${data.host.firstName} ${data.host.lastName}`);
-        setSubscribers(data.subscribers);
-        if(typeof(data.limit) === "string") {
-            setSubscriberStop(false);
-        } else if (data.subscribers.length < data.limit){
-            setSubscriberStop(false);
-        } else {
-            setSubscriberStop(true);
-        };
-    };
 
     useEffect(() => { 
         sendRequest({url: `http://localhost:3500/${category}/${eventId}`},
-        data => updateFunc(data));
+        data => dispatchAction({type: "UPDATE_EVENT", data}));
 
         sendRequest({url: `http://localhost:3500/members/2`},
-        (data) => {
-            setMemberData(data);
-            setCurrentSubscriber({
-                id: data.id,
-                firstName: data.firstName,
-                lastName: data.lastName,
-                image: data.img
-            });
-            data.subscribedEvents.some(event => 
-                event.category === category &&
-                event.id === +eventId
-            ) ? setIsSubscriber(true) : setIsSubscriber(false);
-        });
+        data => dispatchAction({type: "UPDATE_MEMBER", data, category, eventId}));
+            
     }, [sendRequest, category, eventId]);
 
 
@@ -81,23 +47,18 @@ const EventDetails = (props) => {
                 url: `http://localhost:3500/${category}/${eventId}`,
                 method: "PATCH",
                 headers: { "Content-Type": "application/json"},
-                body: {subscribers: subscribers.concat(currentSubscriber)}
+                body: {subscribers: eventState.eventData.subscribers.concat(eventState.currentSubscriber)}
             },  
-                (data) => updateFunc(data)
+                data => dispatchAction({type: "UPDATE_EVENT", data})
         );
         sendRequest({
                 url:`http://localhost:3500/members/2`,
                 method: "PATCH",
                 headers: { "Content-Type": "application/json"},
-                body: {subscribedEvents: memberData.subscribedEvents.concat({id: +eventId, category: category})}
+                body: {subscribedEvents: eventState.memberData.subscribedEvents.concat({id: +eventId, category: category})}
             },
-                (data) => {
-                    setMemberData(data);
-                    data.subscribedEvents.some(event => 
-                    event.category === category &&
-                    event.id === +eventId
-                    ) ? setIsSubscriber(true) : setIsSubscriber(false);
-            }
+                
+                data => dispatchAction({type: "ADD_SUBSCRIBER", data, category, eventId})
             
         );
     };
@@ -107,22 +68,20 @@ const EventDetails = (props) => {
                 url:`http://localhost:3500/${category}/${eventId}`,
                 method: "PATCH",
                 headers: { "Content-Type": "application/json"},
-                body: {subscribers: subscribers.filter(subscriber => subscriber.id !== currentSubscriber.id)}
+                body: {subscribers: eventState.eventData.subscribers.filter(
+                    subscriber => subscriber.id !== eventState.currentSubscriber.id
+                )}
             },
-                (data) => updateFunc(data)
+                (data) => dispatchAction({type: "UPDATE_EVENT", data})
         );
         sendRequest({
                 url:`http://localhost:3500/members/2`,
                 method: "PATCH",
                 headers: { "Content-Type": "application/json"},
-                body: {subscribedEvents: memberData.subscribedEvents.filter(event => event.id !== +eventId && category)}
+                body: {subscribedEvents: eventState.memberData.subscribedEvents.filter(event => event.id !== +eventId && category)}
             },
-                (data) => {
-                    setMemberData(data);
-                    data.subscribedEvents.some(event => 
-                    event.category === category && event.id === +eventId
-                    ) ? setIsSubscriber(true) : setIsSubscriber(false);
-                }
+
+                data => dispatchAction({type: "REMOVE_SUBSCRIBER", data, category, eventId})
         );
     };
 
@@ -130,36 +89,36 @@ const EventDetails = (props) => {
         <>
             {isLoading && <p>Is Loading...</p>}
             {error && <p>{error}</p>}
-            {eventData && 
+            {eventState.eventData && 
             <div className={classes.grid}>
-                <EventImage image={eventData.img}/>
+                <EventImage image={eventState.eventData.img}/>
                 <div className={classes.content}>
                 <EventInfo 
-                    title={eventData.title}
-                    address={eventData.address}
-                    zip={eventData.zip}
-                    city={eventData.city}
-                    date={eventData.date}
+                    title={eventState.eventData.title}
+                    address={eventState.eventData.address}
+                    zip={eventState.eventData.zip}
+                    city={eventState.eventData.city}
+                    date={eventState.eventData.date}
                     time="18pm"
-                    price={eventData.price}
+                    price={eventState.eventData.price}
                 />
                 <EventSubscribers 
-                    subscribers={subscribersExcerpt}
-                    furtherAmount={furtherAmount}
-                    leftPlaces={leftPlacesAmount}
+                    subscribers={eventState.subscribersExcerpt}
+                    furtherAmount={eventState.furtherAmount}
+                    leftPlaces={eventState.leftPlacesAmount}
                 />
-                {!isSubscriber && !subscriberStop && 
+                {!eventState.isSubscriber && !eventState.subscriberStop && 
                 <Button 
                     onClick={subscribeHandler}
                     >Subscribe
                 </Button>}
-                {isSubscriber &&
+                {eventState.isSubscriber &&
                 <Button 
                     className={classes.unsubscribeBtn}
                     onClick={unsubscribeHandler}
                     >Unsubscribe
                 </Button>}
-                {!isSubscriber && subscriberStop && 
+                {!eventState.isSubscriber && eventState.subscriberStop && 
                 <Button 
                     className={classes.disabledBtn}
                     disabled={true}
@@ -167,16 +126,120 @@ const EventDetails = (props) => {
                 </Button>}
                 <div className={classes.description}>
                     <h4>Description</h4>
-                    <p className={classes.description}>{eventData.text}</p>
+                    <p className={classes.description}>{eventState.eventData.text}</p>
                 </div>
                 <OrganizerCard 
-                    img={eventData.host.image}
-                    name={organizerName}
+                    img={eventState.eventData.host.image}
+                    name={eventState.organizerName}
                 />
                 </div>
             </div>}
         </>
     );
+};
+
+function eventReducer(state, action) {
+    switch (action.type) {
+        case "UPDATE_EVENT": 
+
+        let eventData = action.data;
+
+        let subscribersExcerpt;
+        if(action.data.subscribers.length > 0) {
+            const shortenData = action.data.subscribers.slice(-5);
+            subscribersExcerpt = shortenData.map(subscriber => (
+                <img key={subscriber.id} 
+                     className={classes.subscriberImage} 
+                     src={require(`../../assets/members/${subscriber.image}`)} 
+                     alt=""
+            />)
+        )} else {
+            subscribersExcerpt = [];
+        };
+
+        let furtherAmount;
+        if(action.data.subscribers.length > 5) {
+            furtherAmount = `+${action.data.subscribers.length - 5}`;
+        } else {
+            furtherAmount = null;
+        };
+
+        let leftPlacesAmount;
+        if(typeof(action.data.limit) === "number"){
+            leftPlacesAmount = action.data.limit - action.data.subscribers.length;
+        } else {
+            leftPlacesAmount = null;
+        }
+
+        let subscriberStop;
+        if(typeof(action.data.limit) === "string") {
+            subscriberStop = false;
+        } else if (action.data.subscribers.length < action.data.limit){
+            subscriberStop = false;
+        } else {
+            subscriberStop = true;
+        };
+
+        let organizerName = `${action.data.host.firstName} ${action.data.host.lastName}`;
+
+            return {
+                ...state,
+                eventData,
+                subscribersExcerpt,
+                furtherAmount,
+                leftPlacesAmount,
+                organizerName,
+                subscriberStop,
+            };
+            
+        case "UPDATE_MEMBER":
+
+            return {
+                ...state,
+                currentSubscriber: {
+                    id: action.data.id,
+                    firstName: action.data.firstName,
+                    lastName: action.data.lastName,
+                    image: action.data.img
+                },
+                memberData: action.data,
+                isSubscriber: (
+                    action.data.subscribedEvents.some(event => 
+                        event.category === action.category &&
+                        event.id === +action.eventId
+                    ) ? true : false
+                )
+            };
+
+        case "ADD_SUBSCRIBER":
+
+            return {
+                ...state,
+                memberData: action.data,
+                isSubscriber: (
+                    action.data.subscribedEvents.some(event => 
+                        event.category === action.category &&
+                        event.id === +action.eventId
+                    ) ? true : false
+                )
+            };
+        
+        case "REMOVE_SUBSCRIBER":
+
+            return {
+                ...state,
+                memberData: action.data,
+                isSubscriber: (
+                    action.data.subscribedEvents.some(event => 
+                        event.category === action.category &&
+                        event.id === +action.eventId
+                    ) ? true : false
+                )
+            };
+
+        default:
+            return defaultState;
+    }
 };
 
 export default EventDetails;

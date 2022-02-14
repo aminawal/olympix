@@ -103,12 +103,6 @@
           "firstName": "Abdullah",
           "lastName": "Minawal",
           "image": "1.png"
-        },
-        {
-          "id": 2,
-          "firstName": "Emily",
-          "lastName": "Ratatui",
-          "image": "2.png"
         }
       ]
     },
@@ -264,12 +258,7 @@
       "lastName": "Ratatui",
       "email": "emily@hotmail.de",
       "img": "2.png",
-      "subscribedEvents": [
-        {
-          "id": 2,
-          "category": "fussball"
-        }
-      ],
+      "subscribedEvents": [],
       "organizedEvents": []
     }
   ]
