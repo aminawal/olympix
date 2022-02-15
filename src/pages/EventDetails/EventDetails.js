@@ -1,6 +1,9 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
+import { createPortal } from "react-dom";
 import { useParams } from "react-router";
 
+import Modal from "../../components/Modal/Modal";
+import EventSubscribersList from "../../components/EventSubscribersList";
 import EventInfo from "../../components/EventInfo";
 import EventSubscribers from "../../components/EventSubscribers/EventSubscribers";
 import Button from "../../components/Button/Button";
@@ -26,6 +29,8 @@ const defaultState = {
 const EventDetails = (props) => {
 
     const [eventState, dispatchAction] = useReducer(eventReducer, defaultState);
+
+    const [showSubscribers, setShowSubscribers] = useState(false);
 
     const {category, eventId} = useParams();
 
@@ -85,12 +90,32 @@ const EventDetails = (props) => {
         );
     };
 
+    const showSubscribersHandler = () => {
+        setShowSubscribers(true);
+    }
+
+    const closeModalHandler = () => {
+        setShowSubscribers(false);
+    };
+
+
     return(
         <>
-            {isLoading && <p>Is Loading...</p>}
+            {isLoading && <p>Loading event...</p>}
             {error && <p>{error}</p>}
             {eventState.eventData && 
             <div className={classes.grid}>
+                {showSubscribers &&
+                    createPortal(
+                        <Modal 
+                            title="All Subscribers"
+                            onCloseModal={closeModalHandler}
+                        >
+                            <EventSubscribersList subscribers={eventState.eventData.subscribers}/>
+                        </Modal>
+                        , document.getElementById('modal-root')
+                    )
+                }
                 <EventImage image={eventState.eventData.img}/>
                 <div className={classes.content}>
                 <EventInfo 
@@ -106,6 +131,7 @@ const EventDetails = (props) => {
                     subscribers={eventState.subscribersExcerpt}
                     furtherAmount={eventState.furtherAmount}
                     leftPlaces={eventState.leftPlacesAmount}
+                    onShowSubscribers={showSubscribersHandler}
                 />
                 {!eventState.isSubscriber && !eventState.subscriberStop && 
                 <Button 

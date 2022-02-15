@@ -1,0 +1,10 @@
+.overlayGrid{
+    position: fixed;
+    top: 45px;
+    bottom: 45px;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: grid;
+    place-items: center;
+}

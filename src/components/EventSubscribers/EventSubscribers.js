@@ -22,6 +22,7 @@ const EventSubscribers = (props) => {
             <EventSubscribersExcerpt 
                 subscribers={props.subscribers}
                 furtherAmount={props.furtherAmount}
+                onShowSubscribers={props.onShowSubscribers}
             />
             {leftPlaces}
         </section>

@@ -19,61 +19,7 @@
       },
       "subscribers": [
         {
-          "id": 3,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        },
-        {
-          "id": 4,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        },
-        {
-          "id": 5,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        },
-        {
-          "id": 6,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        },
-        {
-          "id": 7,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        },
-        {
-          "id": 8,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        },
-        {
-          "id": 9,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        },
-        {
           "id": 1,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        },
-        {
-          "id": 10,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        },
-        {
-          "id": 22,
           "firstName": "Abdullah",
           "lastName": "Minawal",
           "image": "1.png"
@@ -129,6 +75,12 @@
           "firstName": "Abdullah",
           "lastName": "Minawal",
           "image": "1.png"
+        },
+        {
+          "id": 2,
+          "firstName": "Emily",
+          "lastName": "Ratatui",
+          "image": "2.png"
         }
       ]
     },
@@ -155,6 +107,12 @@
           "firstName": "Abdullah",
           "lastName": "Minawal",
           "image": "1.png"
+        },
+        {
+          "id": 2,
+          "firstName": "Emily",
+          "lastName": "Ratatui",
+          "image": "2.png"
         }
       ]
     },
@@ -207,6 +165,12 @@
           "firstName": "Abdullah",
           "lastName": "Minawal",
           "image": "1.png"
+        },
+        {
+          "id": 2,
+          "firstName": "Emily",
+          "lastName": "Ratatui",
+          "image": "2.png"
         }
       ]
     }
@@ -258,7 +222,20 @@
       "lastName": "Ratatui",
       "email": "emily@hotmail.de",
       "img": "2.png",
-      "subscribedEvents": [],
+      "subscribedEvents": [
+        {
+          "id": 4,
+          "category": "fussball"
+        },
+        {
+          "id": 6,
+          "category": "fussball"
+        },
+        {
+          "id": 3,
+          "category": "fussball"
+        }
+      ],
       "organizedEvents": []
     }
   ]
