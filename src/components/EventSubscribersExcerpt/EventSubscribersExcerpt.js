@@ -7,7 +7,7 @@ import classes from './EventSubscribersExcerpt.module.css';
 const EventSubscribersExcerpt = (props) => {
 
     return(
-        <div className={classes.grid}>
+        <div className={classes.grid} onClick={props.onShowSubscribers}>
             {props.subscribers}
             {props.furtherAmount && <span>{props.furtherAmount}</span>}
             <FontAwesomeIcon className={classes.caret} icon={faCaretRight} />

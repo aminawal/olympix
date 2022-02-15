@@ -1,0 +1,33 @@
+.grid {
+    display: grid;
+    grid-template-rows: 40px auto 40px;
+    height: 200px;
+    width: 75%;
+    z-index: 100;
+    background-color: #eee;
+    padding: 10px;
+  }
+
+.grid > header > h1 {
+    margin: 0;
+    font-size: 1em;
+}
+
+.grid > main {
+    overflow: scroll;
+}
+
+.grid > footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid > footer > button {
+    border: 1px solid transparent;
+    border-radius: 3px;
+    font-weight: bold;
+    color: #fff;
+    background-color: red;
+    margin: 0;
+    grid-column-start: 3;
+}
