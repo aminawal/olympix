@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from "react";
-import { createPortal } from "react-dom";
+
 import { useParams } from "react-router";
 
 import Modal from "../../components/Modal/Modal";
@@ -8,10 +8,11 @@ import EventInfo from "../../components/EventInfo";
 import EventSubscribers from "../../components/EventSubscribers/EventSubscribers";
 import Button from "../../components/Button/Button";
 import OrganizerCard from "../../components/OrganizerCard/OrganizerCard";
+import EventImage from "../../components/EventImage/EventImage";
+
 import useFetch from "../../hooks/useFetch";
 
 import classes from './EventDetails.module.css';
-import EventImage from "../../components/EventImage/EventImage";
 
 const defaultState = {
     eventData: null,
@@ -41,7 +42,7 @@ const EventDetails = (props) => {
         sendRequest({url: `http://localhost:3500/${category}/${eventId}`},
         data => dispatchAction({type: "UPDATE_EVENT", data}));
 
-        sendRequest({url: `http://localhost:3500/members/2`},
+        sendRequest({url: `http://localhost:3500/members/1`},
         data => dispatchAction({type: "UPDATE_MEMBER", data, category, eventId}));
             
     }, [sendRequest, category, eventId]);
@@ -57,10 +58,19 @@ const EventDetails = (props) => {
                 data => dispatchAction({type: "UPDATE_EVENT", data})
         );
         sendRequest({
-                url:`http://localhost:3500/members/2`,
+                url:`http://localhost:3500/members/1`,
                 method: "PATCH",
                 headers: { "Content-Type": "application/json"},
-                body: {subscribedEvents: eventState.memberData.subscribedEvents.concat({id: +eventId, category: category})}
+                body: {subscribedEvents: eventState.memberData.subscribedEvents.concat(
+                    {
+                        id: `${category}+${+eventId}`, 
+                        category: category, 
+                        img: eventState.eventData.img,
+                        title: eventState.eventData.title,
+                        city: eventState.eventData.city,
+                        date: eventState.eventData.date,
+                    }
+                )}
             },
                 
                 data => dispatchAction({type: "ADD_SUBSCRIBER", data, category, eventId})
@@ -80,10 +90,10 @@ const EventDetails = (props) => {
                 (data) => dispatchAction({type: "UPDATE_EVENT", data})
         );
         sendRequest({
-                url:`http://localhost:3500/members/2`,
+                url:`http://localhost:3500/members/1`,
                 method: "PATCH",
                 headers: { "Content-Type": "application/json"},
-                body: {subscribedEvents: eventState.memberData.subscribedEvents.filter(event => event.id !== +eventId && category)}
+                body: {subscribedEvents: eventState.memberData.subscribedEvents.filter(event => event.id !== `${category}+${+eventId}`)}
             },
 
                 data => dispatchAction({type: "REMOVE_SUBSCRIBER", data, category, eventId})
@@ -106,15 +116,12 @@ const EventDetails = (props) => {
             {eventState.eventData && 
             <div className={classes.grid}>
                 {showSubscribers &&
-                    createPortal(
-                        <Modal 
-                            title="All Subscribers"
-                            onCloseModal={closeModalHandler}
-                        >
-                            <EventSubscribersList subscribers={eventState.eventData.subscribers}/>
-                        </Modal>
-                        , document.getElementById('modal-root')
-                    )
+                    <Modal 
+                        title="All Subscribers"
+                        onCloseModal={closeModalHandler}
+                    >
+                        <EventSubscribersList subscribers={eventState.eventData.subscribers}/>
+                    </Modal>
                 }
                 <EventImage image={eventState.eventData.img}/>
                 <div className={classes.content}>
@@ -231,8 +238,7 @@ function eventReducer(state, action) {
                 memberData: action.data,
                 isSubscriber: (
                     action.data.subscribedEvents.some(event => 
-                        event.category === action.category &&
-                        event.id === +action.eventId
+                        event.id === `${action.category}+${action.eventId}`
                     ) ? true : false
                 )
             };
@@ -244,8 +250,7 @@ function eventReducer(state, action) {
                 memberData: action.data,
                 isSubscriber: (
                     action.data.subscribedEvents.some(event => 
-                        event.category === action.category &&
-                        event.id === +action.eventId
+                        event.id === `${action.category}+${action.eventId}`
                     ) ? true : false
                 )
             };
@@ -257,8 +262,7 @@ function eventReducer(state, action) {
                 memberData: action.data,
                 isSubscriber: (
                     action.data.subscribedEvents.some(event => 
-                        event.category === action.category &&
-                        event.id === +action.eventId
+                        event.id === `${action.category}+${action.eventId}`
                     ) ? true : false
                 )
             };
