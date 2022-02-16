@@ -42,7 +42,7 @@ const EventDetails = (props) => {
         sendRequest({url: `http://localhost:3500/${category}/${eventId}`},
         data => dispatchAction({type: "UPDATE_EVENT", data}));
 
-        sendRequest({url: `http://localhost:3500/members/2`},
+        sendRequest({url: `http://localhost:3500/members/1`},
         data => dispatchAction({type: "UPDATE_MEMBER", data, category, eventId}));
             
     }, [sendRequest, category, eventId]);
@@ -58,7 +58,7 @@ const EventDetails = (props) => {
                 data => dispatchAction({type: "UPDATE_EVENT", data})
         );
         sendRequest({
-                url:`http://localhost:3500/members/2`,
+                url:`http://localhost:3500/members/1`,
                 method: "PATCH",
                 headers: { "Content-Type": "application/json"},
                 body: {subscribedEvents: eventState.memberData.subscribedEvents.concat(
@@ -90,7 +90,7 @@ const EventDetails = (props) => {
                 (data) => dispatchAction({type: "UPDATE_EVENT", data})
         );
         sendRequest({
-                url:`http://localhost:3500/members/2`,
+                url:`http://localhost:3500/members/1`,
                 method: "PATCH",
                 headers: { "Content-Type": "application/json"},
                 body: {subscribedEvents: eventState.memberData.subscribedEvents.filter(event => event.id !== `${category}+${+eventId}`)}

@@ -17,7 +17,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 2,
+          "firstName": "Emily",
+          "lastName": "Ratatui",
+          "image": "2.png"
+        }
+      ]
     },
     {
       "id": 2,
@@ -36,7 +43,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 2,
+          "firstName": "Emily",
+          "lastName": "Ratatui",
+          "image": "2.png"
+        }
+      ]
     },
     {
       "id": 3,
@@ -74,7 +88,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 2,
+          "firstName": "Emily",
+          "lastName": "Ratatui",
+          "image": "2.png"
+        }
+      ]
     },
     {
       "id": 5,
@@ -93,7 +114,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 2,
+          "firstName": "Emily",
+          "lastName": "Ratatui",
+          "image": "2.png"
+        }
+      ]
     },
     {
       "id": 6,
@@ -112,7 +140,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 2,
+          "firstName": "Emily",
+          "lastName": "Ratatui",
+          "image": "2.png"
+        }
+      ]
     }
   ],
   "basketball": [
@@ -133,7 +168,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 2,
+          "firstName": "Emily",
+          "lastName": "Ratatui",
+          "image": "2.png"
+        }
+      ]
     },
     {
       "id": 2,
@@ -152,7 +194,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 2,
+          "firstName": "Emily",
+          "lastName": "Ratatui",
+          "image": "2.png"
+        }
+      ]
     },
     {
       "id": 3,
@@ -190,7 +239,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 2,
+          "firstName": "Emily",
+          "lastName": "Ratatui",
+          "image": "2.png"
+        }
+      ]
     },
     {
       "id": 5,
@@ -209,7 +265,20 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 2,
+          "firstName": "Emily",
+          "lastName": "Ratatui",
+          "image": "2.png"
+        },
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
     },
     {
       "id": 6,
@@ -228,7 +297,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 2,
+          "firstName": "Emily",
+          "lastName": "Ratatui",
+          "image": "2.png"
+        }
+      ]
     }
   ],
   "members": [
@@ -238,7 +314,16 @@
       "lastName": "Minawal",
       "email": "abdullah.minawal@hotmail.de",
       "img": "1.png",
-      "subscribedEvents": [],
+      "subscribedEvents": [
+        {
+          "id": "basketball+5",
+          "category": "basketball",
+          "img": "fussball/fussballImage5.png",
+          "title": "Kicken in der Soccerhalle",
+          "city": "Hannover",
+          "date": "01.07.2021"
+        }
+      ],
       "organizedEvents": []
     },
     {
@@ -247,7 +332,88 @@
       "lastName": "Ratatui",
       "email": "emily@hotmail.de",
       "img": "2.png",
-      "subscribedEvents": [],
+      "subscribedEvents": [
+        {
+          "id": "basketball+1",
+          "category": "basketball",
+          "img": "fussball/fussballImage1.png",
+          "title": "Fußball bei Victoria Hamburg",
+          "city": "Hamburg",
+          "date": "01.03.2021"
+        },
+        {
+          "id": "basketball+2",
+          "category": "basketball",
+          "img": "fussball/fussballImage2.png",
+          "title": "Junioren Fußball Union Berlin",
+          "city": "Berlin",
+          "date": "01.04.2021"
+        },
+        {
+          "id": "basketball+4",
+          "category": "basketball",
+          "img": "fussball/fussballImage4.png",
+          "title": "Fußball im Stadtpark",
+          "city": "Hamburg",
+          "date": "01.06.2021"
+        },
+        {
+          "id": "basketball+5",
+          "category": "basketball",
+          "img": "fussball/fussballImage5.png",
+          "title": "Kicken in der Soccerhalle",
+          "city": "Hannover",
+          "date": "01.07.2021"
+        },
+        {
+          "id": "basketball+6",
+          "category": "basketball",
+          "img": "fussball/fussballImage6.png",
+          "title": "Fußball in München",
+          "city": "München",
+          "date": "01.08.2021"
+        },
+        {
+          "id": "fussball+1",
+          "category": "fussball",
+          "img": "fussball/fussballImage1.png",
+          "title": "Fußball bei Victoria Hamburg",
+          "city": "Hamburg",
+          "date": "01.03.2021"
+        },
+        {
+          "id": "fussball+2",
+          "category": "fussball",
+          "img": "fussball/fussballImage2.png",
+          "title": "Junioren Fußball Union Berlin",
+          "city": "Berlin",
+          "date": "01.04.2021"
+        },
+        {
+          "id": "fussball+4",
+          "category": "fussball",
+          "img": "fussball/fussballImage4.png",
+          "title": "Fußball im Stadtpark",
+          "city": "Hamburg",
+          "date": "01.06.2021"
+        },
+        {
+          "id": "fussball+5",
+          "category": "fussball",
+          "img": "fussball/fussballImage5.png",
+          "title": "Kicken in der Soccerhalle",
+          "city": "Hannover",
+          "date": "01.07.2021"
+        },
+        {
+          "id": "fussball+6",
+          "category": "fussball",
+          "img": "fussball/fussballImage6.png",
+          "title": "Fußball in München",
+          "city": "München",
+          "date": "01.08.2021"
+        }
+      ],
       "organizedEvents": []
     }
   ]

@@ -15,7 +15,7 @@ const Events = (props) => {
 
     useEffect(() => {
 
-        sendRequest({url: `http://localhost:3500/members/2`},
+        sendRequest({url: `http://localhost:3500/members/1`},
         data => {
             setSubscribedEvents(data.subscribedEvents);
             setCurrentUser({id: data.id});
@@ -42,11 +42,11 @@ const Events = (props) => {
             }
         );
         sendRequest({
-            url: `http://localhost:3500/members/2`
+            url: `http://localhost:3500/members/1`
         },
             data => {
                 sendRequest({
-                    url:`http://localhost:3500/members/2`,
+                    url:`http://localhost:3500/members/1`,
                     method: "PATCH",
                     headers: { "Content-Type": "application/json"},
                     body: {subscribedEvents: data.subscribedEvents.filter(
