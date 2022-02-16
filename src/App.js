@@ -6,6 +6,7 @@ import Grid from "./components/Grid";
 import Categories from "./pages/Categories/Categories";
 import Category from "./pages/Category/Category";
 import EventDetails from "./pages/EventDetails/EventDetails";
+import Events from "./pages/Events/Events";
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route path="/sports/:category/:eventId" exact>
           <EventDetails />
+        </Route>
+        <Route path="/events" exact>
+          <Events />
         </Route>
       </Switch>
     </Grid>

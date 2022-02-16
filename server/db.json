@@ -17,14 +17,7 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": [
-        {
-          "id": 1,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        }
-      ]
+      "subscribers": []
     },
     {
       "id": 2,
@@ -43,14 +36,7 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": [
-        {
-          "id": 1,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        }
-      ]
+      "subscribers": []
     },
     {
       "id": 3,
@@ -69,20 +55,7 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": [
-        {
-          "id": 1,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        },
-        {
-          "id": 2,
-          "firstName": "Emily",
-          "lastName": "Ratatui",
-          "image": "2.png"
-        }
-      ]
+      "subscribers": []
     },
     {
       "id": 4,
@@ -101,20 +74,7 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": [
-        {
-          "id": 1,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        },
-        {
-          "id": 2,
-          "firstName": "Emily",
-          "lastName": "Ratatui",
-          "image": "2.png"
-        }
-      ]
+      "subscribers": []
     },
     {
       "id": 5,
@@ -133,14 +93,7 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": [
-        {
-          "id": 1,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        }
-      ]
+      "subscribers": []
     },
     {
       "id": 6,
@@ -159,23 +112,125 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": [
-        {
-          "id": 1,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        },
-        {
-          "id": 2,
-          "firstName": "Emily",
-          "lastName": "Ratatui",
-          "image": "2.png"
-        }
-      ]
+      "subscribers": []
     }
   ],
-  "basketball": [],
+  "basketball": [
+    {
+      "id": 1,
+      "img": "fussball/fussballImage1.png",
+      "title": "Fußball bei Victoria Hamburg",
+      "date": "01.03.2021",
+      "price": 20,
+      "address": "Teststraße 123",
+      "zip": "22529",
+      "city": "Hamburg",
+      "limit": 10,
+      "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ",
+      "host": {
+        "id": 1,
+        "firstName": "Abdullah",
+        "lastName": "Minawal",
+        "image": "1.png"
+      },
+      "subscribers": []
+    },
+    {
+      "id": 2,
+      "img": "fussball/fussballImage2.png",
+      "title": "Junioren Fußball Union Berlin",
+      "date": "01.04.2021",
+      "price": 10,
+      "address": "Teststraße 123",
+      "zip": "12555",
+      "city": "Berlin",
+      "limit": "No limit",
+      "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ",
+      "host": {
+        "id": 1,
+        "firstName": "Abdullah",
+        "lastName": "Minawal",
+        "image": "1.png"
+      },
+      "subscribers": []
+    },
+    {
+      "id": 3,
+      "img": "fussball/fussballImage3.png",
+      "title": "Frauenfußball beim ETV",
+      "date": "01.05.2021",
+      "price": 15,
+      "address": "Teststraße 123",
+      "zip": "20144",
+      "city": "Hamburg",
+      "limit": 5,
+      "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ",
+      "host": {
+        "id": 1,
+        "firstName": "Abdullah",
+        "lastName": "Minawal",
+        "image": "1.png"
+      },
+      "subscribers": []
+    },
+    {
+      "id": 4,
+      "img": "fussball/fussballImage4.png",
+      "title": "Fußball im Stadtpark",
+      "date": "01.06.2021",
+      "price": 0,
+      "address": "Teststraße 123",
+      "zip": "22303",
+      "city": "Hamburg",
+      "limit": 2,
+      "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ",
+      "host": {
+        "id": 1,
+        "firstName": "Abdullah",
+        "lastName": "Minawal",
+        "image": "1.png"
+      },
+      "subscribers": []
+    },
+    {
+      "id": 5,
+      "img": "fussball/fussballImage5.png",
+      "title": "Kicken in der Soccerhalle",
+      "date": "01.07.2021",
+      "price": 10,
+      "address": "Teststraße 123",
+      "zip": "30519",
+      "city": "Hannover",
+      "limit": 8,
+      "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ",
+      "host": {
+        "id": 1,
+        "firstName": "Abdullah",
+        "lastName": "Minawal",
+        "image": "1.png"
+      },
+      "subscribers": []
+    },
+    {
+      "id": 6,
+      "img": "fussball/fussballImage6.png",
+      "title": "Fußball in München",
+      "date": "01.08.2021",
+      "price": 50,
+      "address": "Teststraße 123",
+      "zip": "80331",
+      "city": "München",
+      "limit": 34,
+      "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ",
+      "host": {
+        "id": 1,
+        "firstName": "Abdullah",
+        "lastName": "Minawal",
+        "image": "1.png"
+      },
+      "subscribers": []
+    }
+  ],
   "members": [
     {
       "id": 1,
@@ -183,38 +238,8 @@
       "lastName": "Minawal",
       "email": "abdullah.minawal@hotmail.de",
       "img": "1.png",
-      "subscribedEvents": [
-        {
-          "id": 1,
-          "category": "fussball"
-        },
-        {
-          "id": 2,
-          "category": "fussball"
-        },
-        {
-          "id": 5,
-          "category": "fussball"
-        },
-        {
-          "id": 3,
-          "category": "fussball"
-        },
-        {
-          "id": 4,
-          "category": "fussball"
-        },
-        {
-          "id": 6,
-          "category": "fussball"
-        }
-      ],
-      "organizedEvents": [
-        {
-          "id": 1,
-          "category": "fussball"
-        }
-      ]
+      "subscribedEvents": [],
+      "organizedEvents": []
     },
     {
       "id": 2,
@@ -222,20 +247,7 @@
       "lastName": "Ratatui",
       "email": "emily@hotmail.de",
       "img": "2.png",
-      "subscribedEvents": [
-        {
-          "id": 4,
-          "category": "fussball"
-        },
-        {
-          "id": 6,
-          "category": "fussball"
-        },
-        {
-          "id": 3,
-          "category": "fussball"
-        }
-      ],
+      "subscribedEvents": [],
       "organizedEvents": []
     }
   ]

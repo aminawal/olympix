@@ -34,10 +34,12 @@ const Category = (props) => {
                 if (data.length > 0) {
                     for(let key in data){
                         const eventData = {
+                            category,
                             id: data[key].id,
                             img: data[key].img,
                             title: data[key].title,
-                            city: data[key].city
+                            city: data[key].city,
+                            date: data[key].date
                         };
                         eventsData.push(eventData);
                     };
@@ -64,9 +66,11 @@ const Category = (props) => {
         <EventCard 
             key={event.id}
             id={event.id}
+            category={event.category}
             image={event.img}
             title={event.title}
             city={event.city}
+            date={event.date}
         />
     ))
 

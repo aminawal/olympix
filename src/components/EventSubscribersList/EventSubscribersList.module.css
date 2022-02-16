@@ -11,6 +11,10 @@
     gap: 10px;
 }
 
+.grid > span {
+    font-size: 0.8em;
+}
+
 .grid > div > img {
     height: 35px;
     width: auto;

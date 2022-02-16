@@ -6,12 +6,12 @@ const EventSubscribersList = (props) => {
 
     return(
         <section className={classes.grid}>
-            {props.subscribers ? props.subscribers.map(subscriber => (
-            <div>
-                <img src={require(`../../assets/members/${subscriber.image}`)} alt="" />
-                <span>{`${subscriber.firstName} ${subscriber.lastName}`}</span>
-            </div>
-        )) : <span>No subcribers yet.</span>}
+            {props.subscribers.length > 0 ? props.subscribers.map(subscriber => (
+                <div key={subscriber.id}>
+                    <img src={require(`../../assets/members/${subscriber.image}`)} alt="" />
+                    <span>{`${subscriber.firstName} ${subscriber.lastName}`}</span>
+                </div>
+            )) : <span>No subcribers yet.</span>}
         </section>
     );
 };
