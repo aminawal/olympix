@@ -17,14 +17,7 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": [
-        {
-          "id": 1,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        }
-      ]
+      "subscribers": []
     },
     {
       "id": 2,
@@ -69,14 +62,7 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": [
-        {
-          "id": 1,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        }
-      ]
+      "subscribers": []
     },
     {
       "id": 4,
@@ -121,14 +107,7 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": [
-        {
-          "id": 1,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        }
-      ]
+      "subscribers": []
     },
     {
       "id": 6,
@@ -147,14 +126,7 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": [
-        {
-          "id": 1,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        }
-      ]
+      "subscribers": []
     }
   ],
   "basketball": [
@@ -175,7 +147,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
     },
     {
       "id": 2,
@@ -213,7 +192,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
     },
     {
       "id": 4,
@@ -270,7 +256,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
     }
   ],
   "members": [
@@ -282,20 +275,28 @@
       "img": "1.png",
       "subscribedEvents": [
         {
-          "id": "fussball+5",
-          "category": "fussball",
-          "img": "fussball/fussballImage5.png",
-          "title": "Kicken in der Soccerhalle",
-          "city": "Hannover",
-          "date": "20.07.2021"
-        },
-        {
-          "id": "fussball+3",
-          "category": "fussball",
+          "id": "basketball+3",
+          "category": "basketball",
           "img": "fussball/fussballImage3.png",
           "title": "Frauenfußball beim ETV",
           "city": "Hamburg",
-          "date": "04.05.2021"
+          "date": "01.05.2021"
+        },
+        {
+          "id": "basketball+6",
+          "category": "basketball",
+          "img": "fussball/fussballImage6.png",
+          "title": "Fußball in München",
+          "city": "München",
+          "date": "01.08.2021"
+        },
+        {
+          "id": "basketball+1",
+          "category": "basketball",
+          "img": "fussball/fussballImage1.png",
+          "title": "Fußball bei Victoria Hamburg",
+          "city": "Hamburg",
+          "date": "01.03.2021"
         },
         {
           "id": "fussball+4",
@@ -304,22 +305,6 @@
           "title": "Fußball im Stadtpark",
           "city": "Hamburg",
           "date": "19.06.2021"
-        },
-        {
-          "id": "fussball+6",
-          "category": "fussball",
-          "img": "fussball/fussballImage6.png",
-          "title": "Fußball in München",
-          "city": "München",
-          "date": "03.08.2021"
-        },
-        {
-          "id": "fussball+1",
-          "category": "fussball",
-          "img": "fussball/fussballImage1.png",
-          "title": "Fußball bei Victoria Hamburg",
-          "city": "Hamburg",
-          "date": "24.03.2021"
         },
         {
           "id": "fussball+2",

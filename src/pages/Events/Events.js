@@ -39,6 +39,18 @@ const Events = (props) => {
             
     }, [sendRequest, filteredSport]);
 
+    const sortByDateHandler = (value) => {
+        if(value === "") {
+            history.push(match.path);
+        } else {
+            history.push(`${match.path}/quotes?sort=${value}`);
+        }
+    };
+
+    const filterSportHandler = (value) => {
+        setFilteredSport(value);
+    };
+
     const unsubscribeHandler = (e, eventPath) => {
         e.preventDefault();
         sendRequest({
@@ -78,12 +90,15 @@ const Events = (props) => {
     };
 
     let eventsList;
+    let filteredEventsCount;
 
     if (subscribedEvents) {
 
         const filteredEvents = filteredSport ? 
         subscribedEvents.filter(event => event.category === filteredSport) : 
         subscribedEvents;
+
+        filteredEventsCount = filteredEvents.length;
 
         const eventCards = event => {
 
@@ -140,7 +155,7 @@ const Events = (props) => {
         }
     };
 
-    const sortByDate = [
+    const sortOptions = [
         {
             title: "Ascending Date",
             value: "asc"
@@ -151,24 +166,12 @@ const Events = (props) => {
         }
     ];
 
-    const sportsArray = ctx.sports.map(sport => {
+    const filterOptions = ctx.sports.map(sport => {
         return {
             title: sport.name, 
             value: sport.link
         }
     });
-
-    const sortByDateHandler = (value) => {
-        if(value === "") {
-            history.push(match.path);
-        } else {
-            history.push(`${match.path}/quotes?sort=${value}`);
-        }
-    };
-
-    const filterSportHandler = (value) => {
-        setFilteredSport(value);
-    };
 
     return(
         <div className={classes.grid}>
@@ -181,15 +184,22 @@ const Events = (props) => {
                     name="SortByDate"
                     defaultOption="Sort by"
                     defaultValue={sortingOrder ? sortingOrder : ""}
-                    options={sortByDate}
+                    options={sortOptions}
                 />
                 <CardsSelectFilter 
                     onChange={filterSportHandler}
                     name="filterSport"
                     defaultOption="Filter sport"
                     defaultValue={filteredSport}
-                    options={sportsArray}
+                    options={filterOptions}
                 />
+                <div className={classes.eventsCounter}>
+                    {filteredEventsCount === 1 ? 
+                        <span><b>{filteredEventsCount}</b> subscribed event</span> :
+                    filteredEventsCount > 1 && 
+                        <span><b>{filteredEventsCount}</b> subscribed events</span> 
+                    }
+                </div>
             </section>}
             <section className={classes.eventsList}>
                 {!noEvents && eventsList}

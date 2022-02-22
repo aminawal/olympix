@@ -13,3 +13,7 @@
     display: grid;
     gap: 5px;
 }
+
+.eventsCounter {
+    font-size: 0.8em;
+}
