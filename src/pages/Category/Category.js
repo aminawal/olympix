@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-import CardsFilter from "../../components/CardsFilter/CardsFilter";
+import CardsInputFilter from "../../components/CardsInputFilter/CardsInputFilter";
 import EventCard from "../../components/EventCard/EventCard";
 
 import classes from './Category.module.css';
@@ -84,7 +84,7 @@ const Category = (props) => {
 
     return(
         <div className={classes.grid}>
-            {events.length > 0 && <CardsFilter onFilter={filterHandler} length={filteredEvents.length}/>}
+            {events.length > 0 && <CardsInputFilter onFilter={filterHandler} length={filteredEvents.length}/>}
             <section>
                 {isLoading && <p>Loading events...</p>}
                 {error && error}

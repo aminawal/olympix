@@ -24,7 +24,7 @@ function App() {
         <Route path="/sports/:category/:eventId" exact>
           <EventDetails />
         </Route>
-        <Route path="/events" exact>
+        <Route path="/events">
           <Events />
         </Route>
       </Switch>
