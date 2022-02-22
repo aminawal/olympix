@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+
+import { useHistory, useLocation, useRouteMatch } from "react-router";
 
 import EventCard from '../../components/EventCard'
+import CardsSelectFilter from "../../components/CardsSelectFilter";
+import DataContext from "../../context/DataContext";
 
 import useFetch from "../../hooks/useFetch";
 
@@ -9,9 +13,20 @@ import classes from './Events.module.css';
 const Events = (props) => {
 
     const [subscribedEvents, setSubscribedEvents] = useState(null);
+    const [filteredSport, setFilteredSport] = useState(null);
     const [currentUser, setCurrentUser] = useState(null);
-
+    const [noEvents, setNoEvents] = useState(false);
+    
     const { isLoading, error, sendRequest } = useFetch();
+
+    const ctx = useContext(DataContext);
+    const history = useHistory();
+    const location = useLocation();
+    const match = useRouteMatch();
+
+    const queryParams = new URLSearchParams(location.search);
+
+    const sortingOrder = queryParams.get("sort"); 
 
     useEffect(() => {
 
@@ -19,9 +34,10 @@ const Events = (props) => {
         data => {
             setSubscribedEvents(data.subscribedEvents);
             setCurrentUser({id: data.id});
+            data.subscribedEvents.length === 0 && setNoEvents(true);
         });
             
-    }, [sendRequest]);
+    }, [sendRequest, filteredSport]);
 
     const unsubscribeHandler = (e, eventPath) => {
         e.preventDefault();
@@ -37,7 +53,7 @@ const Events = (props) => {
                         subscriber => subscriber.id !== currentUser.id
                     )}
                 },
-                    data => console.log(data)
+                    data => null
                 );
             }
         );
@@ -53,7 +69,10 @@ const Events = (props) => {
                         event => event.id !== `${eventPath.category}+${eventPath.eventId}`
                     )}
                 },
-                    data => setSubscribedEvents(data.subscribedEvents)
+                    data => {
+                        setSubscribedEvents(data.subscribedEvents);
+                        data.subscribedEvents.length === 0 && setNoEvents(true);
+                    }
             );
         });
     };
@@ -61,35 +80,122 @@ const Events = (props) => {
     let eventsList;
 
     if (subscribedEvents) {
-        if(subscribedEvents.length > 0) {
-            eventsList = subscribedEvents.map(event => {
 
-                const eventId = +(event.id.split("+")[1]);
-                
-                return (
-                    <EventCard 
-                        key={event.id}
-                        id={eventId}
-                        category={event.category}
-                        image={event.img}
-                        title={event.title}
-                        city={event.city}
-                        date={event.date}
-                        cardBtn={true}
-                        onUnsubscribe={unsubscribeHandler}
-                     />)
-            });
-        } else {
-            eventsList = <p>No subscribed events yet.</p>
+        const filteredEvents = filteredSport ? 
+        subscribedEvents.filter(event => event.category === filteredSport) : 
+        subscribedEvents;
+
+        const eventCards = event => {
+
+            const eventId = +(event.id.split("+")[1]);
+            
+            return (
+                <EventCard 
+                    key={event.id}
+                    id={eventId}
+                    category={event.category}
+                    image={event.img}
+                    title={event.title}
+                    city={event.city}
+                    date={event.date}
+                    cardBtn={true}
+                    onUnsubscribe={unsubscribeHandler}
+                 />)
+        };
+
+        const dateTimestamp = (date) => {
+            const splittedDate = date.split(".");
+            const day = splittedDate[0];
+            const month = splittedDate[1];
+            const year = splittedDate[2];
+
+            return new Date(year, month, day).getTime();
+        };
+
+        if(filteredEvents.length > 0 && !sortingOrder) {
+            eventsList = filteredEvents.map(event => eventCards(event));
+        } else if(filteredEvents.length > 0 && sortingOrder === "asc") {
+            eventsList = filteredEvents.sort((eventA, eventB) => {
+
+                if(dateTimestamp(eventA.date) > dateTimestamp(eventB.date)) {
+                    return 1;
+                } else if(dateTimestamp(eventA.date) < dateTimestamp(eventB.date)) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }).map(event => eventCards(event));
+        } else if(filteredEvents.length > 0 && sortingOrder === "dsc") {
+            eventsList = filteredEvents.sort((eventA, eventB) => {
+                if(dateTimestamp(eventA.date) > dateTimestamp(eventB.date)) {
+                    return -1;
+                } else if(dateTimestamp(eventA.date) < dateTimestamp(eventB.date)) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }).map(event => eventCards(event));
+        } else if(filteredEvents.length === 0) {
+            eventsList = <p>No subscribed {filteredSport} event.</p>
         }
     };
 
+    const sortByDate = [
+        {
+            title: "Ascending Date",
+            value: "asc"
+        },
+        {
+            title: "Descending Date",
+            value: "dsc",
+        }
+    ];
+
+    const sportsArray = ctx.sports.map(sport => {
+        return {
+            title: sport.name, 
+            value: sport.link
+        }
+    });
+
+    const sortByDateHandler = (value) => {
+        if(value === "") {
+            history.push(match.path);
+        } else {
+            history.push(`${match.path}/quotes?sort=${value}`);
+        }
+    };
+
+    const filterSportHandler = (value) => {
+        setFilteredSport(value);
+    };
+
     return(
-        <section className={classes.grid}>
+        <div className={classes.grid}>
             {isLoading && <p>Events Loading...</p>}
             {error && <p>{error}</p>}
-            {eventsList}
-        </section>
+            {!noEvents && !isLoading && 
+            <section className={classes.filters}>
+                <CardsSelectFilter 
+                    onChange={sortByDateHandler}
+                    name="SortByDate"
+                    defaultOption="Sort by"
+                    defaultValue={sortingOrder ? sortingOrder : ""}
+                    options={sortByDate}
+                />
+                <CardsSelectFilter 
+                    onChange={filterSportHandler}
+                    name="filterSport"
+                    defaultOption="Filter sport"
+                    defaultValue={filteredSport}
+                    options={sportsArray}
+                />
+            </section>}
+            <section className={classes.eventsList}>
+                {!noEvents && eventsList}
+                {noEvents && <p>No subscribed events yet.</p>}
+            </section>
+        </div>
     );
 };
 

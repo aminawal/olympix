@@ -2,9 +2,9 @@ import React from "react";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import classes from './CardsFilter.module.css';
+import classes from './CardsInputFilter.module.css';
 
-const CardsFilter = (props) => {
+const CardsInputFilter = (props) => {
 
     const changeHandler = e => {
         props.onFilter(e.target.value);
@@ -22,4 +22,4 @@ const CardsFilter = (props) => {
     );
 };
 
-export default CardsFilter;
+export default CardsInputFilter;

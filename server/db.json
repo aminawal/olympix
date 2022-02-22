@@ -4,7 +4,7 @@
       "id": 1,
       "img": "fussball/fussballImage1.png",
       "title": "Fußball bei Victoria Hamburg",
-      "date": "01.03.2021",
+      "date": "24.03.2021",
       "price": 20,
       "address": "Teststraße 123",
       "zip": "22529",
@@ -19,10 +19,10 @@
       },
       "subscribers": [
         {
-          "id": 2,
-          "firstName": "Emily",
-          "lastName": "Ratatui",
-          "image": "2.png"
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
         }
       ]
     },
@@ -30,7 +30,7 @@
       "id": 2,
       "img": "fussball/fussballImage2.png",
       "title": "Junioren Fußball Union Berlin",
-      "date": "01.04.2021",
+      "date": "15.04.2021",
       "price": 10,
       "address": "Teststraße 123",
       "zip": "12555",
@@ -45,10 +45,10 @@
       },
       "subscribers": [
         {
-          "id": 2,
-          "firstName": "Emily",
-          "lastName": "Ratatui",
-          "image": "2.png"
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
         }
       ]
     },
@@ -56,7 +56,7 @@
       "id": 3,
       "img": "fussball/fussballImage3.png",
       "title": "Frauenfußball beim ETV",
-      "date": "01.05.2021",
+      "date": "04.05.2021",
       "price": 15,
       "address": "Teststraße 123",
       "zip": "20144",
@@ -69,13 +69,20 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
     },
     {
       "id": 4,
       "img": "fussball/fussballImage4.png",
       "title": "Fußball im Stadtpark",
-      "date": "01.06.2021",
+      "date": "19.06.2021",
       "price": 0,
       "address": "Teststraße 123",
       "zip": "22303",
@@ -90,10 +97,10 @@
       },
       "subscribers": [
         {
-          "id": 2,
-          "firstName": "Emily",
-          "lastName": "Ratatui",
-          "image": "2.png"
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
         }
       ]
     },
@@ -101,7 +108,7 @@
       "id": 5,
       "img": "fussball/fussballImage5.png",
       "title": "Kicken in der Soccerhalle",
-      "date": "01.07.2021",
+      "date": "20.07.2021",
       "price": 10,
       "address": "Teststraße 123",
       "zip": "30519",
@@ -116,10 +123,10 @@
       },
       "subscribers": [
         {
-          "id": 2,
-          "firstName": "Emily",
-          "lastName": "Ratatui",
-          "image": "2.png"
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
         }
       ]
     },
@@ -127,7 +134,7 @@
       "id": 6,
       "img": "fussball/fussballImage6.png",
       "title": "Fußball in München",
-      "date": "01.08.2021",
+      "date": "03.08.2021",
       "price": 50,
       "address": "Teststraße 123",
       "zip": "80331",
@@ -142,10 +149,10 @@
       },
       "subscribers": [
         {
-          "id": 2,
-          "firstName": "Emily",
-          "lastName": "Ratatui",
-          "image": "2.png"
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
         }
       ]
     }
@@ -168,14 +175,7 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": [
-        {
-          "id": 2,
-          "firstName": "Emily",
-          "lastName": "Ratatui",
-          "image": "2.png"
-        }
-      ]
+      "subscribers": []
     },
     {
       "id": 2,
@@ -194,14 +194,7 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": [
-        {
-          "id": 2,
-          "firstName": "Emily",
-          "lastName": "Ratatui",
-          "image": "2.png"
-        }
-      ]
+      "subscribers": []
     },
     {
       "id": 3,
@@ -239,14 +232,7 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": [
-        {
-          "id": 2,
-          "firstName": "Emily",
-          "lastName": "Ratatui",
-          "image": "2.png"
-        }
-      ]
+      "subscribers": []
     },
     {
       "id": 5,
@@ -265,20 +251,7 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": [
-        {
-          "id": 2,
-          "firstName": "Emily",
-          "lastName": "Ratatui",
-          "image": "2.png"
-        },
-        {
-          "id": 1,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        }
-      ]
+      "subscribers": []
     },
     {
       "id": 6,
@@ -297,14 +270,7 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": [
-        {
-          "id": 2,
-          "firstName": "Emily",
-          "lastName": "Ratatui",
-          "image": "2.png"
-        }
-      ]
+      "subscribers": []
     }
   ],
   "members": [
@@ -316,12 +282,52 @@
       "img": "1.png",
       "subscribedEvents": [
         {
-          "id": "basketball+5",
-          "category": "basketball",
+          "id": "fussball+5",
+          "category": "fussball",
           "img": "fussball/fussballImage5.png",
           "title": "Kicken in der Soccerhalle",
           "city": "Hannover",
-          "date": "01.07.2021"
+          "date": "20.07.2021"
+        },
+        {
+          "id": "fussball+3",
+          "category": "fussball",
+          "img": "fussball/fussballImage3.png",
+          "title": "Frauenfußball beim ETV",
+          "city": "Hamburg",
+          "date": "04.05.2021"
+        },
+        {
+          "id": "fussball+4",
+          "category": "fussball",
+          "img": "fussball/fussballImage4.png",
+          "title": "Fußball im Stadtpark",
+          "city": "Hamburg",
+          "date": "19.06.2021"
+        },
+        {
+          "id": "fussball+6",
+          "category": "fussball",
+          "img": "fussball/fussballImage6.png",
+          "title": "Fußball in München",
+          "city": "München",
+          "date": "03.08.2021"
+        },
+        {
+          "id": "fussball+1",
+          "category": "fussball",
+          "img": "fussball/fussballImage1.png",
+          "title": "Fußball bei Victoria Hamburg",
+          "city": "Hamburg",
+          "date": "24.03.2021"
+        },
+        {
+          "id": "fussball+2",
+          "category": "fussball",
+          "img": "fussball/fussballImage2.png",
+          "title": "Junioren Fußball Union Berlin",
+          "city": "Berlin",
+          "date": "15.04.2021"
         }
       ],
       "organizedEvents": []
@@ -332,88 +338,7 @@
       "lastName": "Ratatui",
       "email": "emily@hotmail.de",
       "img": "2.png",
-      "subscribedEvents": [
-        {
-          "id": "basketball+1",
-          "category": "basketball",
-          "img": "fussball/fussballImage1.png",
-          "title": "Fußball bei Victoria Hamburg",
-          "city": "Hamburg",
-          "date": "01.03.2021"
-        },
-        {
-          "id": "basketball+2",
-          "category": "basketball",
-          "img": "fussball/fussballImage2.png",
-          "title": "Junioren Fußball Union Berlin",
-          "city": "Berlin",
-          "date": "01.04.2021"
-        },
-        {
-          "id": "basketball+4",
-          "category": "basketball",
-          "img": "fussball/fussballImage4.png",
-          "title": "Fußball im Stadtpark",
-          "city": "Hamburg",
-          "date": "01.06.2021"
-        },
-        {
-          "id": "basketball+5",
-          "category": "basketball",
-          "img": "fussball/fussballImage5.png",
-          "title": "Kicken in der Soccerhalle",
-          "city": "Hannover",
-          "date": "01.07.2021"
-        },
-        {
-          "id": "basketball+6",
-          "category": "basketball",
-          "img": "fussball/fussballImage6.png",
-          "title": "Fußball in München",
-          "city": "München",
-          "date": "01.08.2021"
-        },
-        {
-          "id": "fussball+1",
-          "category": "fussball",
-          "img": "fussball/fussballImage1.png",
-          "title": "Fußball bei Victoria Hamburg",
-          "city": "Hamburg",
-          "date": "01.03.2021"
-        },
-        {
-          "id": "fussball+2",
-          "category": "fussball",
-          "img": "fussball/fussballImage2.png",
-          "title": "Junioren Fußball Union Berlin",
-          "city": "Berlin",
-          "date": "01.04.2021"
-        },
-        {
-          "id": "fussball+4",
-          "category": "fussball",
-          "img": "fussball/fussballImage4.png",
-          "title": "Fußball im Stadtpark",
-          "city": "Hamburg",
-          "date": "01.06.2021"
-        },
-        {
-          "id": "fussball+5",
-          "category": "fussball",
-          "img": "fussball/fussballImage5.png",
-          "title": "Kicken in der Soccerhalle",
-          "city": "Hannover",
-          "date": "01.07.2021"
-        },
-        {
-          "id": "fussball+6",
-          "category": "fussball",
-          "img": "fussball/fussballImage6.png",
-          "title": "Fußball in München",
-          "city": "München",
-          "date": "01.08.2021"
-        }
-      ],
+      "subscribedEvents": [],
       "organizedEvents": []
     }
   ]
