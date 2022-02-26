@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 
-import { useHistory, useLocation, useRouteMatch } from "react-router";
+import { useHistory, useLocation } from "react-router";
 
 import EventCard from '../EventCard'
 import CardsSelectFilter from "../CardsSelectFilter";
@@ -23,11 +23,11 @@ const SubscribedEvents = (props) => {
     const ctx = useContext(DataContext);
     const history = useHistory();
     const location = useLocation();
-    const match = useRouteMatch();
 
     const queryParams = new URLSearchParams(location.search);
 
     const sortingOrder = queryParams.get("sort"); 
+    console.log(sortingOrder);
 
     useEffect(() => {
 
@@ -38,7 +38,7 @@ const SubscribedEvents = (props) => {
             data.subscribedEvents.length === 0 && setNoEvents(true);
         });
             
-    }, [sendRequest, filteredSport, rerenderEvents]);
+    }, [sendRequest, rerenderEvents]);
 
     const sortByDateHandler = (value) => {
         if(value === "") {
@@ -180,29 +180,30 @@ const SubscribedEvents = (props) => {
             {isLoading && <p>Events Loading...</p>}
             {error && <p>{error}</p>}
             {!noEvents && !isLoading && 
-            <section className={classes.filters}>
-                <CardsSelectFilter 
-                    onChange={sortByDateHandler}
-                    name="SortByDate"
-                    defaultOption="Sort by"
-                    defaultValue={sortingOrder ? sortingOrder : ""}
-                    options={sortOptions}
-                />
-                <CardsSelectFilter 
-                    onChange={filterSportHandler}
-                    name="filterSport"
-                    defaultOption="Filter sport"
-                    defaultValue={filteredSport}
-                    options={filterOptions}
-                />
-                <div className={classes.eventsCounter}>
-                    {filteredEventsCount === 1 ? 
-                        <span><b>{filteredEventsCount}</b> subscribed event</span> :
-                    filteredEventsCount > 1 && 
-                        <span><b>{filteredEventsCount}</b> subscribed events</span> 
-                    }
-                </div>
-            </section>}
+                <section className={classes.filters}>
+                    <CardsSelectFilter 
+                        onChange={sortByDateHandler}
+                        name="SortByDate"
+                        defaultOption="Sort by"
+                        defaultValue={sortingOrder ? sortingOrder : ""}
+                        options={sortOptions}
+                    />
+                    <CardsSelectFilter 
+                        onChange={filterSportHandler}
+                        name="filterSport"
+                        defaultOption="Filter sport"
+                        defaultValue={filteredSport}
+                        options={filterOptions}
+                    />
+                    <div className={classes.eventsCounter}>
+                        {filteredEventsCount === 1 ? 
+                            <span><b>{filteredEventsCount}</b> subscribed event</span> :
+                        filteredEventsCount > 1 && 
+                            <span><b>{filteredEventsCount}</b> subscribed events</span> 
+                        }
+                    </div>
+                </section>
+            }
             <section className={classes.eventsList}>
                 {!noEvents && eventsList}
                 {noEvents && <p>No subscribed events yet.</p>}
