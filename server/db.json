@@ -17,7 +17,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
     },
     {
       "id": 2,
@@ -36,7 +43,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
     },
     {
       "id": 3,
@@ -93,7 +107,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
     },
     {
       "id": 6,
@@ -112,7 +133,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
     }
   ],
   "basketball": [
@@ -133,14 +161,7 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": [
-        {
-          "id": 1,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        }
-      ]
+      "subscribers": []
     },
     {
       "id": 2,
@@ -216,14 +237,7 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": [
-        {
-          "id": 1,
-          "firstName": "Abdullah",
-          "lastName": "Minawal",
-          "image": "1.png"
-        }
-      ]
+      "subscribers": []
     },
     {
       "id": 6,
@@ -254,20 +268,36 @@
       "img": "1.png",
       "subscribedEvents": [
         {
-          "id": "basketball+1",
-          "category": "basketball",
-          "img": "fussball/fussballImage1.png",
-          "title": "Basketball bei Victoria Hamburg",
-          "city": "Hamburg",
-          "date": "01.03.2021"
+          "id": "fussball+5",
+          "category": "fussball",
+          "img": "fussball/fussballImage5.png",
+          "title": "Kicken in der Soccerhalle",
+          "city": "Hannover",
+          "date": "20.07.2021"
         },
         {
-          "id": "basketball+5",
-          "category": "basketball",
-          "img": "fussball/fussballImage5.png",
-          "title": "Basketball in der Soccerhalle",
-          "city": "Hannover",
-          "date": "01.07.2021"
+          "id": "fussball+1",
+          "category": "fussball",
+          "img": "fussball/fussballImage1.png",
+          "title": "Fußball bei Victoria Hamburg",
+          "city": "Hamburg",
+          "date": "24.03.2021"
+        },
+        {
+          "id": "fussball+6",
+          "category": "fussball",
+          "img": "fussball/fussballImage6.png",
+          "title": "Fußball in München",
+          "city": "München",
+          "date": "03.08.2021"
+        },
+        {
+          "id": "fussball+2",
+          "category": "fussball",
+          "img": "fussball/fussballImage2.png",
+          "title": "Junioren Fußball Union Berlin",
+          "city": "Berlin",
+          "date": "15.04.2021"
         }
       ],
       "organizedEvents": []
