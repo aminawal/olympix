@@ -7,7 +7,7 @@ import classes from './EventCard.module.css';
 const EventCard = (props) => {
 
     const clickHandler = (event) => {
-        props.onUnsubscribe(event, {category: props.category, eventId: props.id})
+        props.onClick(event, {category: props.category, eventId: props.id})
     };
 
     return(
@@ -22,7 +22,11 @@ const EventCard = (props) => {
                         <span>{props.city}</span>
                         <span>{props.date}</span>
                     </div>
-                    {props.cardBtn && <button onClick={clickHandler}>Unsubscribe</button>}
+                    {props.cardBtn && 
+                        <button style={{backgroundColor: props.btnStyle}} onClick={clickHandler}>
+                            {props.btn}
+                        </button>
+                    }
                 </div>
             </div>
         </Link>

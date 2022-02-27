@@ -27,7 +27,6 @@ const SubscribedEvents = (props) => {
     const queryParams = new URLSearchParams(location.search);
 
     const sortingOrder = queryParams.get("sort"); 
-    console.log(sortingOrder);
 
     useEffect(() => {
 
@@ -116,7 +115,8 @@ const SubscribedEvents = (props) => {
                     city={event.city}
                     date={event.date}
                     cardBtn={true}
-                    onUnsubscribe={unsubscribeHandler}
+                    onClick={unsubscribeHandler}
+                    btn="Unsubscribe"
                  />)
         };
 
@@ -179,7 +179,7 @@ const SubscribedEvents = (props) => {
         <div className={classes.grid}>
             {isLoading && <p>Events Loading...</p>}
             {error && <p>{error}</p>}
-            {!noEvents && !isLoading && 
+            {!noEvents && !isLoading && !error && 
                 <section className={classes.filters}>
                     <CardsSelectFilter 
                         onChange={sortByDateHandler}

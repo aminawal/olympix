@@ -190,7 +190,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
     },
     {
       "id": 5,
@@ -238,8 +245,26 @@
       "lastName": "Minawal",
       "email": "abdullah.minawal@hotmail.de",
       "img": "1.png",
-      "subscribedEvents": [],
-      "organizedEvents": []
+      "subscribedEvents": [
+        {
+          "id": "basketball+4",
+          "category": "basketball",
+          "img": "fussball/fussballImage4.png",
+          "title": "Basketball im Stadtpark",
+          "city": "Hamburg",
+          "date": "01.06.2021"
+        }
+      ],
+      "createdEvents": [
+        {
+          "id": "basketball+4",
+          "category": "basketball",
+          "img": "fussball/fussballImage4.png",
+          "title": "Basketball im Stadtpark",
+          "city": "Hamburg",
+          "date": "01.06.2021"
+        }
+      ]
     },
     {
       "id": 2,
@@ -248,7 +273,7 @@
       "email": "emily@hotmail.de",
       "img": "2.png",
       "subscribedEvents": [],
-      "organizedEvents": []
+      "createdEvents": []
     }
   ]
 }
