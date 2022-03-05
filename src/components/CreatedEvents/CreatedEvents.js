@@ -9,7 +9,6 @@ import classes from './CreatedEvents.module.css';
 const CreatedEvents = (props) => {
 
     const [createdEvents, setCreatedEvents] = useState(null);
-    const [currentUser, setCurrentUser] = useState(null);
     const [noEvents, setNoEvents] = useState(false);
     
     const { isLoading, error, sendRequest } = useFetch();
@@ -19,7 +18,6 @@ const CreatedEvents = (props) => {
         sendRequest({url: `http://localhost:3500/members/1`},
         data => {
             setCreatedEvents(data.createdEvents);
-            setCurrentUser({id: data.id});
             data.createdEvents.length === 0 && setNoEvents(true);
         });
             
@@ -29,19 +27,9 @@ const CreatedEvents = (props) => {
         e.preventDefault();
         sendRequest({
             url:`http://localhost:3500/${eventPath.category}/${eventPath.eventId}`,
+            method: "DELETE"
         },
-            (data) => {
-                sendRequest({
-                    url:`http://localhost:3500/${eventPath.category}/${eventPath.eventId}`,
-                    method: "PATCH",
-                    headers: { "Content-Type": "application/json"},
-                    body: {subscribers: data.subscribers.filter(
-                        subscriber => subscriber.id !== currentUser.id
-                    )}
-                },
-                    data => null
-                );
-            }
+            (data) => null
         );
         sendRequest({
             url: `http://localhost:3500/members/1`
@@ -51,26 +39,42 @@ const CreatedEvents = (props) => {
                     url:`http://localhost:3500/members/1`,
                     method: "PATCH",
                     headers: { "Content-Type": "application/json"},
-                    body: {subscribedEvents: data.subscribedEvents.filter(
+                    body: {createdEvents: data.createdEvents.filter(
                         event => event.id !== `${eventPath.category}+${eventPath.eventId}`
                     )}
                 },
                     data => {
-                        setCreatedEvents(data.subscribedEvents);
-                        data.subscribedEvents.length === 0 && setNoEvents(true);
+                        setCreatedEvents(data.createdEvents);
+                        data.createdEvents.length === 0 && setNoEvents(true);
                     }
             );
         });
+        sendRequest({
+            url: `http://localhost:3500/members`
+        },
+            data => {
+                for(let i = 0; i < data.length; i++){
+                    if(data[i].subscribedEvents.some(event => event.id === `${eventPath.category}+${eventPath.eventId}`)){
+                        sendRequest({
+                            url:`http://localhost:3500/members/${data[i].id}`,
+                            method: "PATCH",
+                            headers: { "Content-Type": "application/json"},
+                            body: {subscribedEvents: data[i].subscribedEvents.filter(
+                                event => event.id !== `${eventPath.category}+${eventPath.eventId}`
+                            )}
+                        },
+                            data => null
+                        );
+                    }
+                };
+            }
+        );
+
     };
 
     let eventsList;
-    let filteredEventsCount;
 
     if (createdEvents) {
-
-        const filteredEvents = createdEvents;
-
-        filteredEventsCount = filteredEvents.length;
 
         const eventCards = event => {
 
@@ -92,9 +96,9 @@ const CreatedEvents = (props) => {
                  />)
         };
 
-        if(filteredEventsCount > 0) {
-            eventsList = filteredEvents.map(event => eventCards(event));
-        } else if(filteredEventsCount === 0) {
+        if(createdEvents.length > 0) {
+            eventsList = createdEvents.map(event => eventCards(event));
+        } else if(createdEvents === 0) {
             eventsList = <p>No created event.</p>
         }
     };
@@ -103,15 +107,9 @@ const CreatedEvents = (props) => {
         <div className={classes.grid}>
             {isLoading && <p>Events Loading...</p>}
             {error && <p>{error}</p>}
-            {!noEvents && !isLoading && !error && 
+            {!isLoading && !error && 
                 <section className={classes.filters}>
-                    <div className={classes.eventsCounter}>
-                        {filteredEventsCount === 1 ? 
-                            <span><b>{filteredEventsCount}</b> created event</span> :
-                        filteredEventsCount > 1 && 
-                            <span><b>{filteredEventsCount}</b> created events</span> 
-                        }
-                    </div>
+                    
                 </section>
             }
             <section className={classes.eventsList}>

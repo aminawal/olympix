@@ -17,7 +17,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
     },
     {
       "id": 2,
@@ -74,7 +81,20 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        },
+        {
+          "id": 2,
+          "firstName": "Emily",
+          "lastName": "Ratatui",
+          "image": "2.png"
+        }
+      ]
     },
     {
       "id": 5,
@@ -253,6 +273,22 @@
           "title": "Basketball im Stadtpark",
           "city": "Hamburg",
           "date": "01.06.2021"
+        },
+        {
+          "id": "fussball+1",
+          "category": "fussball",
+          "img": "fussball/fussballImage1.png",
+          "title": "Fußball bei Victoria Hamburg",
+          "city": "Hamburg",
+          "date": "24.03.2021"
+        },
+        {
+          "id": "fussball+4",
+          "category": "fussball",
+          "img": "fussball/fussballImage4.png",
+          "title": "Fußball im Stadtpark",
+          "city": "Hamburg",
+          "date": "19.06.2021"
         }
       ],
       "createdEvents": [
@@ -263,6 +299,14 @@
           "title": "Basketball im Stadtpark",
           "city": "Hamburg",
           "date": "01.06.2021"
+        },
+        {
+          "id": "fussball+4",
+          "category": "fussball",
+          "img": "fussball/fussballImage4.png",
+          "title": "Fußball im Stadtpark",
+          "city": "Hamburg",
+          "date": "19.06.2021"
         }
       ]
     },
@@ -272,7 +316,16 @@
       "lastName": "Ratatui",
       "email": "emily@hotmail.de",
       "img": "2.png",
-      "subscribedEvents": [],
+      "subscribedEvents": [
+        {
+          "id": "fussball+4",
+          "category": "fussball",
+          "img": "fussball/fussballImage4.png",
+          "title": "Fußball im Stadtpark",
+          "city": "Hamburg",
+          "date": "19.06.2021"
+        }
+      ],
       "createdEvents": []
     }
   ]
