@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import EventCard from '../EventCard'
+import CreateNewEventButton from "../CreateNewEventButton";
 
 import useFetch from "../../hooks/useFetch";
 
@@ -109,7 +110,7 @@ const CreatedEvents = (props) => {
             {error && <p>{error}</p>}
             {!isLoading && !error && 
                 <section className={classes.filters}>
-                    
+                    <CreateNewEventButton link="/create"/>
                 </section>
             }
             <section className={classes.eventsList}>
