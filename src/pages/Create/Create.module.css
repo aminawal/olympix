@@ -1,0 +1,42 @@
+.grid {
+    display: grid;
+    gap: 10px;
+}
+
+.grid > p {
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+form {
+    display: grid;
+    gap: 10px;
+}
+
+form > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+}
+
+.input {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.timeInput {
+    font-size: 0.9em;
+}
+
+.textarea {
+    font-family: sans-serif;
+    padding: 10px;
+}
+
+.error {
+    margin: 0;
+    font-size: 0.6em;
+    font-weight: 400;
+    color: red;
+}

@@ -7,6 +7,7 @@ import Categories from "./pages/Categories/Categories";
 import Category from "./pages/Category/Category";
 import EventDetails from "./pages/EventDetails/EventDetails";
 import Events from "./pages/Events/Events";
+import Create from "./pages/Create/Create";
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
         </Route>
         <Route path="/events">
           <Events />
+        </Route>
+        <Route>
+          <Create />
         </Route>
       </Switch>
     </Grid>

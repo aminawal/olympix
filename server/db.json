@@ -17,7 +17,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
     },
     {
       "id": 2,
@@ -36,7 +43,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
     },
     {
       "id": 3,
@@ -106,7 +120,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
     },
     {
       "id": 6,
@@ -125,7 +146,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
     }
   ],
   "basketball": [
@@ -274,6 +302,38 @@
           "title": "Fußball im Stadtpark",
           "city": "Hamburg",
           "date": "19.06.2021"
+        },
+        {
+          "id": "fussball+6",
+          "category": "fussball",
+          "img": "fussball/fussballImage6.png",
+          "title": "Fußball in München",
+          "city": "München",
+          "date": "03.08.2021"
+        },
+        {
+          "id": "fussball+2",
+          "category": "fussball",
+          "img": "fussball/fussballImage2.png",
+          "title": "Junioren Fußball Union Berlin",
+          "city": "Berlin",
+          "date": "15.04.2021"
+        },
+        {
+          "id": "fussball+5",
+          "category": "fussball",
+          "img": "fussball/fussballImage5.png",
+          "title": "Kicken in der Soccerhalle",
+          "city": "Hannover",
+          "date": "20.07.2021"
+        },
+        {
+          "id": "fussball+1",
+          "category": "fussball",
+          "img": "fussball/fussballImage1.png",
+          "title": "Fußball bei Victoria Hamburg",
+          "city": "Hamburg",
+          "date": "24.03.2021"
         }
       ],
       "createdEvents": [
