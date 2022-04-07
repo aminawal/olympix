@@ -17,7 +17,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
     },
     {
       "id": 2,
@@ -36,7 +43,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
     },
     {
       "id": 3,
@@ -106,7 +120,14 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
     },
     {
       "id": 6,
@@ -125,7 +146,42 @@
         "lastName": "Minawal",
         "image": "1.png"
       },
-      "subscribers": []
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "img": "fussball/fussballImage1.png",
+      "category": "fussball",
+      "title": "Fußball am Freitag",
+      "date": "01.04.2022",
+      "time": "13:00",
+      "price": 0,
+      "address": "Parkstraße 21",
+      "zip": "12345",
+      "city": "Hamburg",
+      "limit": 1,
+      "text": "Jo",
+      "host": {
+        "id": 1,
+        "firstName": "Abdullah",
+        "lastName": "Minawal",
+        "image": "1.png"
+      },
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
     }
   ],
   "basketball": [
@@ -251,6 +307,36 @@
       "subscribers": []
     }
   ],
+  "laufen": [
+    {
+      "id": 1,
+      "img": "fussball/fussballImage1.png",
+      "category": "laufen",
+      "title": "Running",
+      "date": "31.05.2022",
+      "time": "18:00",
+      "price": 0.37,
+      "address": "Runstreet 99",
+      "zip": "12345",
+      "city": "Run city",
+      "limit": 10,
+      "text": "Just do it!",
+      "host": {
+        "id": 1,
+        "firstName": "Abdullah",
+        "lastName": "Minawal",
+        "image": "1.png"
+      },
+      "subscribers": [
+        {
+          "id": 1,
+          "firstName": "Abdullah",
+          "lastName": "Minawal",
+          "image": "1.png"
+        }
+      ]
+    }
+  ],
   "members": [
     {
       "id": 1,
@@ -274,6 +360,54 @@
           "title": "Fußball im Stadtpark",
           "city": "Hamburg",
           "date": "19.06.2021"
+        },
+        {
+          "id": "fussball+6",
+          "category": "fussball",
+          "img": "fussball/fussballImage6.png",
+          "title": "Fußball in München",
+          "city": "München",
+          "date": "03.08.2021"
+        },
+        {
+          "id": "fussball+2",
+          "category": "fussball",
+          "img": "fussball/fussballImage2.png",
+          "title": "Junioren Fußball Union Berlin",
+          "city": "Berlin",
+          "date": "15.04.2021"
+        },
+        {
+          "id": "fussball+1",
+          "category": "fussball",
+          "img": "fussball/fussballImage1.png",
+          "title": "Fußball bei Victoria Hamburg",
+          "city": "Hamburg",
+          "date": "24.03.2021"
+        },
+        {
+          "id": "fussball+7",
+          "category": "fussball",
+          "img": "fussball/fussballImage1.png",
+          "title": "Fußball am Freitag",
+          "city": "Hamburg",
+          "date": "01.04.2022"
+        },
+        {
+          "id": "fussball+5",
+          "category": "fussball",
+          "img": "fussball/fussballImage5.png",
+          "title": "Kicken in der Soccerhalle",
+          "city": "Hannover",
+          "date": "20.07.2021"
+        },
+        {
+          "id": "laufen+1",
+          "category": "laufen",
+          "img": "fussball/fussballImage1.png",
+          "title": "Running",
+          "city": "Run city",
+          "date": "31.05.2022"
         }
       ],
       "createdEvents": [
@@ -292,6 +426,22 @@
           "title": "Fußball im Stadtpark",
           "city": "Hamburg",
           "date": "19.06.2021"
+        },
+        {
+          "id": "fussball+7",
+          "category": "fussball",
+          "img": "fussball/fussballImage1.png",
+          "title": "Fußball am Freitag",
+          "city": "Hamburg",
+          "date": "01.04.2022"
+        },
+        {
+          "id": "laufen+1",
+          "category": "laufen",
+          "img": "fussball/fussballImage1.png",
+          "title": "Running",
+          "city": "Run city",
+          "date": "31.05.2022"
         }
       ]
     },
