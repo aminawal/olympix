@@ -202,17 +202,17 @@ const CreateForm = (props) => {
 
         props.onCreateEvent(eventData);
 
-        // categoryRef.current.defaultOption();
-        // resetCategoryHandler();
-        // resetTitleHandler();
-        // resetAddressHandler();
-        // resetZipHandler();
-        // resetCityHandler();
-        // resetDateHandler();
-        // resetTimeHandler();
-        // resetFeeHandler();
-        // resetMaxHandler();
-        // resetDescriptionHandler();
+        categoryRef.current.defaultOption();
+        resetCategoryHandler();
+        resetTitleHandler();
+        resetAddressHandler();
+        resetZipHandler();
+        resetCityHandler();
+        resetDateHandler();
+        resetTimeHandler();
+        resetFeeHandler();
+        resetMaxHandler();
+        resetDescriptionHandler();
 
     };
     

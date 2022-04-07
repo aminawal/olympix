@@ -67,7 +67,7 @@ const Create = (props) => {
                     url: `http://localhost:3500/members/1`
                 },
                     data => {
-                        const eId = data.length > 0 ? `${eventData.category}+${eventId}` : `${eventData.category}+1`;
+                        const eId = `${eventData.category}+${eventId}`;
                         sendRequest({
                             url:`http://localhost:3500/members/1`,
                             method: "PATCH",
@@ -94,7 +94,7 @@ const Create = (props) => {
 
     return(
         <div className={classes.grid}>
-            <Prompt when={formIsFocused} message={() => "Was los bro?"}/>
+            <Prompt when={formIsFocused} message={() => "Are you sure to leave the form? Your entered data will be lost."}/>
             <p>Create a new event</p>
             <CreateForm 
                 onCreateEvent={creatEventHandler}
